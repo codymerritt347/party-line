@@ -4,13 +4,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(user_params)
   end
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to user_path(@user)
+    if @post.valid?
+      @post.save
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,7 +21,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update

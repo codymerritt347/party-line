@@ -4,13 +4,16 @@ class PlansController < ApplicationController
   end
 
   def new
-    @plan = Plan.new(plan_params)
   end
 
   def create
     @plan = Plan.new(plan_params)
-    @plan.save
-    redirect_to plan_path(@plan)
+    if @plan.valid?
+      @plan.save
+      redirect_to plan_path(@plan)
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,7 +21,6 @@ class PlansController < ApplicationController
   end
 
   def edit
-    @plan = Plan.find(params[:id])
   end
 
   def update

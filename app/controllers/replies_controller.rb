@@ -4,13 +4,16 @@ class RepliesController < ApplicationController
   end
 
   def new
-    @reply = Reply.new(reply_params)
   end
 
   def create
     @reply = Reply.new(reply_params)
-    @reply.save
-    redirect_to reply_path(@reply)
+    if @reply.valid?
+      @reply.save
+      redirect_to reply_path(@reply)
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,7 +21,6 @@ class RepliesController < ApplicationController
   end
 
   def edit
-    @reply = Reply.find(params[:id])
   end
 
   def update

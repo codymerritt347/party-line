@@ -4,13 +4,16 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new(group_params)
   end
 
   def create
     @group = Group.new(group_params)
-    @group.save
-    redirect_to group_path(@group)
+    if @group.valid?
+      @group.save
+      redirect_to group_path(@group)
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,7 +21,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
