@@ -12,4 +12,5 @@ class User < ApplicationRecord
       self.first_name
     end
   end
+
 end

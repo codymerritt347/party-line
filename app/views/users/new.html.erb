@@ -1,17 +1,17 @@
-<%= form_tag users_path do %>
+<%= form_for(@user) do |f| %>
   <label>First Name</label><br>
-  <%= text_field_tag :"user[first_name]" %><br>
+  <%= f.text_field :first_name %><br>
 
   <label>Last Name</label><br>
-  <%= text_field_tag :"user[last_name]" %><br>
+  <%= f.text_field :last_name %><br>
 
   <label>Email</label><br>
-  <%= text_field_tag :"user[email]" %><br><br>
+  <%= f.text_field :email %><br>
 
   <label>Password</label><br>
-  <%= text_field_tag :"user[password]" %><br><br>
+  <%= f.text_field :password %><br>
 
-  <input type="submit" value="Submit User">
+  <%= f.submit %>
 <% end %>
 
 <%= params.inspect %>
