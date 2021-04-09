@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @message = Message.new
   end
 
   def create
@@ -39,4 +40,5 @@ class MessagesController < ApplicationController
     params.require(:message).permit(
       :content
     )
+  end
 end

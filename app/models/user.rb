@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_many :replies
 
   validates :first_name, presence: true
-  validates :first_name, format { without: /[0-9]/, message: "First name cannot contain any numbers"}
+  # validates :first_name, format { without: /[0-9]/, message: "First name cannot contain any numbers"}
   validates :last_name, presence: true
-  validates :last_name, format { without: /[0-9]/, message: "Last name cannot contain any numbers"}
+  # validates :last_name, format { without: /[0-9]/, message: "Last name cannot contain any numbers"}
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :password, presence: true

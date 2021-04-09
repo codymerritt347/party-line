@@ -4,6 +4,7 @@ class PlansController < ApplicationController
   end
 
   def new
+    @plan = Plan.new
   end
 
   def create

@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @group = Group.new
   end
 
   def create
@@ -39,4 +40,5 @@ class GroupsController < ApplicationController
     params.require(:group).permit(
       :name
     )
+  end
 end
