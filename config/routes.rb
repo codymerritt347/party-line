@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'about', to: 'users#hello'
   resources :plans
   resources :replies
   resources :messages
