@@ -1,14 +1,14 @@
 <%= form_for(@user) do |f| %>
-  <label>First Name</label><br>
+  <%= f.label :first_name, "First Name" %><br>
   <%= f.text_field :first_name %><br>
 
-  <label>Last Name</label><br>
+  <%= f.label :last_name, "Last Name" %><br>
   <%= f.text_field :last_name %><br>
 
-  <label>Email</label><br>
+  <%= f.label :email, "Email" %><br>
   <%= f.text_field :email %><br>
 
-  <label>Password</label><br>
+  <%= f.label :password, "Password" %><br>
   <%= f.text_field :password %><br>
 
   <%= f.submit %>
