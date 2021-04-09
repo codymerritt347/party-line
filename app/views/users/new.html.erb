@@ -1,0 +1,17 @@
+<%= form_tag users_path do %>
+  <label>First Name</label><br>
+  <%= text_field_tag :"user[first_name]" %><br>
+
+  <label>Last Name</label><br>
+  <%= text_field_tag :"user[last_name]" %><br>
+
+  <label>Email</label><br>
+  <%= text_field_tag :"user[email]" %><br><br>
+
+  <label>Password</label><br>
+  <%= text_field_tag :"user[password]" %><br><br>
+
+  <input type="submit" value="Submit User">
+<% end %>
+
+<%= params.inspect %>
