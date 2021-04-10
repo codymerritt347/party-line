@@ -12,7 +12,12 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :password, presence: true
-  validates :password, length: { in: 6..20 }, message: "Password must contain 6-20 characters"
+  validates :password, length: {
+    minimum: 6,
+    maximum: 19,
+    too_short: "Password must be longer 5 characters",
+    too_long: "Password must be shorter than 20 characters"
+  }
 
   def full_name
     if self.first_name && self.last_name
