@@ -1,5 +1,5 @@
-class Plan < ApplicationRecord
-  belongs_to :group
+class Task < ApplicationRecord
+  belongs_to :party
 
   validates :title, presence: true
   validates :description, presence: true

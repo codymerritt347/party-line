@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :plans
+  resources :tasks
   resources :replies
   resources :messages
-  resources :groups
+  resources :parties
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :user_groups
-  has_many :groups, through: :user_groups
+  has_many :user_parties
+  has_many :parties, through: :user_parties
   has_many :messages
-  has_many :plans, through: :groups
+  has_many :tasks, through: :parties
   has_many :replies
 
   validates :first_name, presence: true
