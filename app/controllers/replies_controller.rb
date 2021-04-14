@@ -22,6 +22,7 @@ class RepliesController < ApplicationController
   end
 
   def edit
+    @reply = Reply.find(params[:id])
   end
 
   def update
