@@ -4,5 +4,5 @@ class Party < ApplicationRecord
   has_many :messages
   has_many :tasks
 
-  validates :name, presence: true
+  validates :name, { presence: true }
 end
