@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'freelance/index'
   resources :tasks
   resources :replies
   resources :messages
