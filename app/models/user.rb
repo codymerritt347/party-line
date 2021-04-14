@@ -9,14 +9,18 @@ class User < ApplicationRecord
   # validates :first_name, format { without: /[0-9]/, message: "First name cannot contain any numbers"}
   validates :last_name, presence: true
   # validates :last_name, format { without: /[0-9]/, message: "Last name cannot contain any numbers"}
-  validates :email, presence: true
-  validates :email, uniqueness: true
-  validates :password, presence: true
-  validates :password, length: {
-    minimum: 6,
-    maximum: 19,
-    too_short: "Password must be longer 5 characters",
-    too_long: "Password must be shorter than 20 characters"
+  validates :email, {
+    presence: true,
+    uniqueness: true
+  }
+  validates :password, {
+    presence: true,
+    length: {
+      minimum: 6,
+      maximum: 19,
+      too_short: "Password must be longer 5 characters",
+      too_long: "Password must be shorter than 20 characters"
+    }
   }
 
   def full_name

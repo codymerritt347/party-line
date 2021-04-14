@@ -39,7 +39,9 @@ class RepliesController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(
-      :content
+      :content,
+      :user_id,
+      :message_id
     )
   end
 end
