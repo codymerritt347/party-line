@@ -32,7 +32,8 @@ class RepliesController < ApplicationController
   end
 
   def destroy
-    @reply = Reply.find(params[:id])
+    Reply.find(params[:id]).destroy
+    redirect_to replies_path
   end
 
   private
