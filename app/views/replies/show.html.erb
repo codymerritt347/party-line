@@ -1,0 +1,10 @@
+<div>
+  <h1>Reply</h1>
+</div>
+<div>
+  <%= @reply.content %><br>
+</div>
+<div>
+  <%= link_to "Edit Reply", edit_reply_path(@reply) %><br>
+  <%= button_to "Delete Reply", reply_path(@reply), method: :delete, data: { confirm: "Are you sure?" } %><br>
+</div>

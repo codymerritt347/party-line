@@ -1,5 +1,10 @@
-<h1><%= @party.name %></h1>
+<div>
+  <h1><%= @party.name %></h1>
+</div>
 <div>
   <%= link_to "All Parties", parties_path %><br>
-  <%= link_to "Edit Party", edit_party_path(@party) %>
+</div>
+<div>
+  <%= link_to "Edit Party", edit_party_path(@party) %><br>
+  <%= button_to "Delete Party", party_path(@party), method: :delete, data: { confirm: "Are you sure?" } %><br>
 </div>
