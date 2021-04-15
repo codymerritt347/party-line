@@ -32,8 +32,13 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    Message.find(params[:id]).destroy
-    redirect_to messages_path
+    message = Message.find(params[:id])
+    if message
+      message.destroy
+      redirect_to messages_path, notice: "Message deleted"
+    else
+      redirect_to messages_path, notice: "Message not found"
+    end
   end
 
   private

@@ -32,8 +32,12 @@ class RepliesController < ApplicationController
   end
 
   def destroy
-    Reply.find(params[:id]).destroy
-    redirect_to replies_path
+    reply = Reply.find(params[:id])
+    if reply
+      reply.destroy
+      redirect_to replies_path, notice: "Reply deleted"
+    else
+      redirect_to replies_path, notice: "Reply not found"
   end
 
   private
