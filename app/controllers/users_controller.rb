@@ -9,8 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.valid?
-      @user.save
+    if @user.save
       redirect_to user_path(@user)
     else
       render :new
@@ -36,7 +35,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    User.find(params[:id]).destroy
+    redirect_to users_path
   end
 
   private

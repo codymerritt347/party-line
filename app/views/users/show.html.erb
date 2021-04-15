@@ -5,6 +5,9 @@
   <%= link_to "New Task", new_task_path %><br>
 </div><br>
 <div>
-  <%= link_to "Edit User", edit_user_path(@user) %><br>
   <%= link_to "All Users", users_path %><br>
+</div><br>
+<div>
+  <%= link_to "Edit User", edit_user_path(@user) %><br>
+  <%= button_to "Delete User", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %>
 <div>
