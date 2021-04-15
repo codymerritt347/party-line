@@ -31,11 +31,9 @@ class User < ApplicationRecord
       message: "must contain 6-20 characters"
     }
   }
-  validates :is_title_case
+  before_create :make_title_case
 
-  before_validation :make_title_case
-
-  # before_save :email_new_user
+  # after_create :email_new_user
 
   def full_name
     if self.first_name && self.last_name
@@ -46,12 +44,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def is_title_case
-    if first_name.split.any?{|w|w[0].upcase != w[0]} && last_name.split.any?{|w|w[0].upcase != w[0]}
-      errors.add(:title, "Name must be in title case")
-    end
-  end
 
   def make_title_case
     self.first_name = self.first_name.titlecase
