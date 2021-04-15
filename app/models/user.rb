@@ -5,8 +5,20 @@ class User < ApplicationRecord
   has_many :tasks, through: :parties
   has_many :replies
 
-  validates :first_name, {presence: true }
-  validates :last_name, { presence: true }
+  validates :first_name, {
+    presence: true,
+    format: {
+      without: /[0-9]/,
+      message: "does not allow numbers"
+    }
+  }
+  validates :last_name, {
+    presence: true,
+    format: {
+      without: /[0-9]/,
+      message: "does not allow numbers"
+    }
+  }
   validates :email, {
     presence: true,
     uniqueness: true
@@ -15,9 +27,8 @@ class User < ApplicationRecord
     presence: true,
     length: {
       minimum: 6,
-      maximum: 19,
-      too_short: "Password must be longer 5 characters",
-      too_long: "Password must be shorter than 20 characters"
+      maximum: 20,
+      message: "must contain 6-20 characters"
     }
   }
 
