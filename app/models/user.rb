@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :messages
   has_many :tasks, through: :parties
   has_many :replies
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, through: :friendships, :source => :user
 
   validates :first_name, {
     presence: true,
