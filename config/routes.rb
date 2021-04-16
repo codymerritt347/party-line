@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :parties
-  resources :replies
-  resources :tasks
   resources :users
+  resources :friendships
+  resources :statuses
+  resources :parties
+  resources :messages
+  resources :replies
 
   get '/', to: 'static#welcome'
   

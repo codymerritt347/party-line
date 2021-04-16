@@ -5,12 +5,13 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.parties.build(name: 'First Party')
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user)
+      render :find_friends
     else
       render :new
     end
@@ -51,7 +52,10 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :password
+      :password,
+      parties_attributes: [
+        :name
+      ]
     )
   end
 end

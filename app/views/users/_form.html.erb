@@ -22,5 +22,10 @@
   <%= f.label :password, "Password" %><br>
   <%= f.text_field :password %><br>
 
+  <%= f.fields_for :parties do |party| %>
+    <%= party.label :name %><br>
+    <%= party.text_field :name %><br>
+  <% end %>
+
   <%= f.submit %>
 <% end %>

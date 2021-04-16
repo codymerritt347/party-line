@@ -2,10 +2,10 @@ class User < ApplicationRecord
   has_many :user_parties
   has_many :parties, through: :user_parties
   has_many :messages
-  has_many :tasks, through: :parties
   has_many :replies
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships, :source => :user
+  has_many :statuses
 
   validates :first_name, {
     presence: true,
