@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_142623) do
+ActiveRecord::Schema.define(version: 2021_04_16_174331) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2021_04_16_142623) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
     t.integer "party_id", null: false
     t.integer "user_id", null: false
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["party_id"], name: "index_messages_on_party_id"
@@ -36,22 +36,21 @@ ActiveRecord::Schema.define(version: 2021_04_16_142623) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.text "content"
     t.integer "user_id", null: false
     t.integer "message_id", null: false
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["message_id"], name: "index_replies_on_message_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.integer "party_id", null: false
+  create_table "statuses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["party_id"], name: "index_tasks_on_party_id"
+    t.index ["user_id"], name: "index_statuses_on_user_id"
   end
 
   create_table "user_parties", force: :cascade do |t|
@@ -76,7 +75,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_142623) do
   add_foreign_key "messages", "users"
   add_foreign_key "replies", "messages"
   add_foreign_key "replies", "users"
-  add_foreign_key "tasks", "parties"
+  add_foreign_key "statuses", "users"
   add_foreign_key "user_parties", "parties"
   add_foreign_key "user_parties", "users"
 end
