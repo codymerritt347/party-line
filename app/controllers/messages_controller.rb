@@ -41,13 +41,23 @@ class MessagesController < ApplicationController
     end
   end
 
+  # Party Name
+
+  def party_name=(name)
+    self.party = Party.find_by(name: name)
+  end
+
+  def party_name
+    self.party ? self.party.name : nil
+  end
+
   private
 
   def message_params
     params.require(:message).permit(
-      :content,
-      :party_id,
-      :user_id
+      :party_name,
+      :user_id,
+      :content
     )
   end
 end

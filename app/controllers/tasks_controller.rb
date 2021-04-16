@@ -45,9 +45,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(
+      :party_id
       :title,
       :description,
-      :party_id
     )
   end
 end
