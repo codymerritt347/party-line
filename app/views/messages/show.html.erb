@@ -5,6 +5,12 @@
   <%= @message.content %>
 </div>
 <div>
+  <%= link_to "Reply", new_reply_path %>
+</div>
+<div>
+  <%= link_to @message.party.name, party_path(@message.party) %>
+</div>
+<div>
   <%= link_to "Edit Message", edit_message_path(@message) %><br>
   <%= button_to "Delete Message", message_path(@message), method: :delete, data: { confirm: "Are you sure?" } %><br>
 </div>

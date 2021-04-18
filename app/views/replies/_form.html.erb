@@ -14,10 +14,10 @@
   <%= f.text_area :content %><br>
 
   <%= f.label :user_id, "User ID" %><br>
-  <%= f.number_field :user_id %><br>
+  <%= f.collection_select :user_id, User.all, :id, :first_name %><br>
 
   <%= f.label :message_id, "Message ID" %><br>
-  <%= f.number_field :message_id %><br>
+  <%= f.collection_select :message_id, Message.all, :id, :content %><br>
 
   <%= f.submit %>
 <% end %>

@@ -6,6 +6,7 @@
   <% @party.messages.each do |message| %>
     <div>
       <b><%= link_to message.user.full_name, message_path(message) %></b><br>
+      <%= message.created_at %><br>
       <%= message.content %>
     </div>
   <% end %>
