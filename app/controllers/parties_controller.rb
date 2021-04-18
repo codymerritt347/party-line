@@ -10,6 +10,7 @@ class PartiesController < ApplicationController
   def create
     @party = Party.new(party_params)
     if @party.valid?
+      @party.users << User.find_by(first_name: "Cody")
       @party.save
       redirect_to party_path(@party)
     else
@@ -45,7 +46,8 @@ class PartiesController < ApplicationController
   
   def party_params
     params.require(:party).permit(
-      :name
+      :name,
+      user_ids: []
     )
   end
 end
