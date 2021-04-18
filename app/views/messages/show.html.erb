@@ -5,6 +5,11 @@
   <%= @message.content %>
 </div>
 <div>
+  <% @message.replies.each do |reply| %>
+    <%= link_to reply.content, reply_path(reply) %>
+  <% end %>
+</div>
+<div>
   <%= link_to "Reply", new_reply_path %>
 </div>
 <div>
