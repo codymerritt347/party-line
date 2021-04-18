@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.valid?
-      @message.user = User.find(params[:id])
       @message.save
       redirect_to message_path(@message)
     else
@@ -42,21 +41,11 @@ class MessagesController < ApplicationController
     end
   end
 
-  # Party Name
-
-  def party_name=(name)
-    self.party = Party.find_by(name: name)
-  end
-
-  def party_name
-    self.party ? self.party.name : nil
-  end
-
   private
 
   def message_params
     params.require(:message).permit(
-      :party_name,
+      :party_id,
       :user_id,
       :content
     )

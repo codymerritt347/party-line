@@ -19,6 +19,7 @@
   <% end %>
 </div>
 <div>
+  <%= link_to "New Message", new_message_path %><br>
   <%= link_to "Edit Party", edit_party_path(@party) %><br>
   <%= button_to "Delete Party", party_path(@party), method: :delete, data: { confirm: "Are you sure?" } %><br>
 </div>

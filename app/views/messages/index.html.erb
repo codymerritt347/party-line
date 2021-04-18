@@ -1,5 +1,5 @@
 <h1>All Messages</h1>
-<%= @messages.each do |message| %>
+<% @messages.each do |message| %>
   <div>
     <%= link_to message.content, message_path(message) %>
   </div>
