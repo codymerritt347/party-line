@@ -2,20 +2,23 @@
   <h1>Message</h1>
 </div>
 <div>
-  <%= @message.content %>
+  <%= @message.created_at %><br>
+  <%= @message.content %><br>
 </div>
 <div>
+  <h3>Replies</h3>
   <% @message.replies.each do |reply| %>
-    <%= link_to reply.content, reply_path(reply) %>
+    <%= reply.created_at %><br>
+    <%= link_to reply.content, reply_path(reply) %><br>
   <% end %>
 </div>
 <div>
-  <%= link_to "Reply", new_reply_path %>
-</div>
-<div>
+  <h4>From</h3>
   <%= link_to @message.party.name, party_path(@message.party) %>
 </div>
 <div>
+  <h3>Options</h3>
+  <%= link_to "Reply", new_reply_path %><br>
   <%= link_to "Edit Message", edit_message_path(@message) %><br>
   <%= button_to "Delete Message", message_path(@message), method: :delete, data: { confirm: "Are you sure?" } %><br>
 </div>
