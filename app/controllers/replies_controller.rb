@@ -10,6 +10,7 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(reply_params)
     if @reply.valid?
+      @reply.user = User.find(params[:id])
       @reply.save
       redirect_to reply_path(@reply)
     else

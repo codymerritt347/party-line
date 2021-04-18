@@ -10,6 +10,7 @@ class StatusesController < ApplicationController
   def create
     @status = Status.new(status_params)
     if @status.valid?
+      @status.user = User.find(params[:id])
       @status.save
       redirect_to status_path(@status)
     else

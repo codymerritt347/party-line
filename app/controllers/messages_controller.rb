@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.valid?
+      @message.user = User.find(params[:id])
       @message.save
       redirect_to message_path(@message)
     else
