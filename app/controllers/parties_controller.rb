@@ -1,4 +1,6 @@
 class PartiesController < ApplicationController
+  helper_method :params
+  
   def index
     @parties = Party.all
   end
