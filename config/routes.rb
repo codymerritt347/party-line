@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   end
   resources :friendships
   resources :parties do
-    resources :messages
+    resources :messages, only [:index, :show, :new, :create]
   end
   resources :messages do
-    resources :replies
+    resources :replies, only: [:index, :show]
   end
   resources :replies
   
