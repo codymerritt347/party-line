@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :friendships
-  resources :statuses
-  resources :parties
-  resources :messages
-  resources :replies
-
-  get '/', to: 'static#welcome'
-  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users do
+    resources :statuses
+    resources :friendships
+    resources :messages
+    resources :replies
+  end
+  resources :friendships
+  resources :parties do
+    resources :messages
+  end
+  resources :messages do
+    resources :replies
+  end
+  end
+  resources :replies
+  
+  get '/', to: 'static#welcome'
 end
