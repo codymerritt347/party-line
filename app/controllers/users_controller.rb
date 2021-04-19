@@ -39,9 +39,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     if user
       user.destroy
-      redirect_to users_path, notice: "User deleted"
+      redirect_to '/'
     else
-      redirect_to users_path, notice: "User not found"
+      render :index
     end
   end
 

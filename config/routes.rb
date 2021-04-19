@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :messages do
     resources :replies
   end
-  end
   resources :replies
   
   get '/', to: 'static#welcome'
