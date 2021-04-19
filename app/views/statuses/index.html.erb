@@ -1,0 +1,8 @@
+<div>
+  <%= @status.each do |status| %>
+    <div>
+      <%= status.created_at %><br>
+      <%= status.content %><br>
+    </div>
+  <% end %>
+</div>
