@@ -1,4 +1,5 @@
 class StatusesController < ApplicationController
+  before_action :set_status, only: %i[ show edit update destroy ]
   def index
     @statuses = Status.all
   end
@@ -19,23 +20,19 @@ class StatusesController < ApplicationController
   end
 
   def show
-    @status = Status.find(params[:id])
   end
 
   def edit
-    @status = Status.find(params[:id])
   end
 
   def update
-    @status = Status.find(params[:id])
     @status.update(status_params)
     redirect_to status_path(@status)
   end
 
   def destroy
-    status = Status.find(params[:id])
-    if status
-      status.destroy
+    if @status
+      @status.destroy
       redirect_to statuses_path, notice: "Status deleted"
     else
       redirect_to statuses_path, notice: "Status not found"
@@ -43,6 +40,10 @@ class StatusesController < ApplicationController
   end
 
   private
+
+  def set_status
+    status = Status.find(params[:id])
+  end
 
   def status_params
     params.require(:status).permit(
