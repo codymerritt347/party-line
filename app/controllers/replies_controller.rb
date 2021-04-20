@@ -42,7 +42,7 @@ class RepliesController < ApplicationController
   private
 
   def set_reply
-    @reply = Reply.find(params[:id])
+    @reply = Reply.find_by_id(params[:id])
   end
 
   def reply_params

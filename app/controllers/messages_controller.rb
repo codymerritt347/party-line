@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
   private
 
   def set_message
-    @message = Message.find(params[:id])
+    @message = Message.find_by_id(params[:id])
   end
 
   def message_params

@@ -34,8 +34,8 @@ class User < ApplicationRecord
       message: "must contain 6-20 characters"
     }
   }
-  before_create :make_title_case
 
+  before_create :make_title_case
   # after_create :email_new_user
 
   def full_name

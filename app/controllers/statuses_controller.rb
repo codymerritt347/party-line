@@ -42,7 +42,7 @@ class StatusesController < ApplicationController
   private
 
   def set_status
-    @status = Status.find(params[:id])
+    @status = Status.find_by_id(params[:id])
   end
 
   def status_params
