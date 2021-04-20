@@ -63,6 +63,8 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
+    benchmark (0.1.1)
+    bigdecimal (3.0.0)
     bindex (0.8.1)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
@@ -222,6 +224,8 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  benchmark
+  bigdecimal
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)

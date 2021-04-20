@@ -36,7 +36,6 @@ class User < ApplicationRecord
   }
 
   before_create :make_title_case
-  # after_create :email_new_user
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -49,8 +48,8 @@ class User < ApplicationRecord
     self.last_name = self.last_name.titlecase
   end
 
-  def email_new_user
-    # https://guides.rubyonrails.org/action_mailer_basics.html
+  def current_user
+    User.find_by_id(1)
   end
 
 end
