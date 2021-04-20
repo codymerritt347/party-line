@@ -12,7 +12,6 @@ class StatusesController < ApplicationController
   def create
     @status = Status.new(status_params)
     if @status.valid?
-      @status.user = User.find(params[:id])
       @status.save
       redirect_to @status
     else
@@ -43,7 +42,7 @@ class StatusesController < ApplicationController
   private
 
   def set_status
-    status = Status.find(params[:id])
+    @status = Status.find(params[:id])
   end
 
   def status_params

@@ -1,5 +1,6 @@
 class RepliesController < ApplicationController
-  before_action :set_reply, only: %i [ show edit update destroy ]
+  before_action :set_reply, only: %i[ show edit update destroy ]
+
   def index
     @replies = Reply.all
   end
@@ -19,23 +20,19 @@ class RepliesController < ApplicationController
   end
 
   def show
-    @reply = Reply.find(params[:id])
   end
 
   def edit
-    @reply = Reply.find(params[:id])
   end
 
   def update
-    @reply = Reply.find(params[:id])
     @reply.update(reply_params)
-    redirect_to reply_path(@reply)
+    redirect_to @reply
   end
 
   def destroy
-    reply = Reply.find(params[:id])
-    if reply
-      reply.destroy
+    if @reply
+      @reply.destroy
       redirect_to replies_path, notice: "Reply deleted"
     else
       redirect_to replies_path, notice: "Reply not found"
@@ -43,6 +40,10 @@ class RepliesController < ApplicationController
   end
 
   private
+
+  def set_reply
+    @reply = Reply.find(params[:id])
+  end
 
   def reply_params
     params.require(:reply).permit(

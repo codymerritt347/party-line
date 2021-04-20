@@ -1,6 +1,6 @@
 class PartiesController < ApplicationController
+  before_action :set_party, only: %i[ show edit update destroy ]
   helper_method :params
-  # before_action :require_login
   
   def index
     @parties = Party.all
@@ -13,32 +13,27 @@ class PartiesController < ApplicationController
   def create
     @party = Party.new(party_params)
     if @party.valid?
-      @party.users << User.find_by(first_name: "Cody")
       @party.save
-      redirect_to party_path(@party)
+      redirect_to @party
     else
       render :new
     end
   end
 
   def show
-    @party = Party.find(params[:id])
   end
 
   def edit
-    @party = Party.find(params[:id])
   end
 
   def update
-    @party = Party.find(params[:id])
     @party.update(party_params)
-    redirect_to party_path(@party)
+    redirect_to @party
   end
 
   def destroy
-    party = Party.find(params[:id])
-    if party
-      party.destroy
+    if @party
+      @party.destroy
       redirect_to parties_path, notice: "Party deleted"
     else
       redirect_to parties_path, notice: "Party not found"
@@ -46,6 +41,10 @@ class PartiesController < ApplicationController
   end
 
   private
+  
+  def set_party
+    @party = Party.find(params[:id])
+  end
   
   def party_params
     params.require(:party).permit(
