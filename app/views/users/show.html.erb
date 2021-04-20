@@ -21,4 +21,7 @@
 <div>
   <%= link_to "Edit User", edit_user_path(@user) %><br>
   <%= button_to "Delete User", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %><br>
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
 <div>

@@ -39,11 +39,7 @@ class User < ApplicationRecord
   # after_create :email_new_user
 
   def full_name
-    if self.first_name && self.last_name
-      "#{self.first_name} #{self.last_name}"
-    else
-      self.first_name
-    end
+    "#{self.first_name} #{self.last_name}"
   end
 
   private

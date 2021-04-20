@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
   helper_method :params
+  # before_action :require_login
   
   def index
     @parties = Party.all
@@ -51,5 +52,9 @@ class PartiesController < ApplicationController
       :name,
       user_ids: []
     )
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 end
