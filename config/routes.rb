@@ -7,16 +7,11 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :statuses
-    resources :friendships
     resources :messages
-    resources :replies
   end
   resources :friendships
-  resources :parties do
-    resources :messages, only: [:index, :show, :new, :create]
-  end
+  resources :parties
   resources :messages do
-    resources :replies, only: [:index, :show]
+    resources :replies
   end
-  resources :replies
 end

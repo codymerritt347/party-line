@@ -6,7 +6,7 @@ class StatusesController < ApplicationController
   end
 
   def new
-    @status = Status.new(user_id: params[:user_id])
+    @status = Status.new
   end
 
   def create

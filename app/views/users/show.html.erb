@@ -8,10 +8,11 @@
 <div>
   <h3><%= @user.first_name %>'s Parties</h3>
   <% @user.parties.each do |party| %>
-    <%= link_to party.name, party_path(party) %><br>
+    <%= link_to party.name, party %><br>
   <% end %>
 </div>
 <div>
+  <%= link_to "New Status", new_user_status_path(@user) %>
   <%= link_to "New Party", new_party_path %><br>
   <%= link_to "New Message", new_message_path %><br>
 </div>
@@ -20,7 +21,7 @@
 </div>
 <div>
   <%= link_to "Edit User", edit_user_path(@user) %><br>
-  <%= button_to "Delete User", user_path(@user), method: :delete, data: { confirm: "Are you sure?" } %><br>
+  <%= button_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure?" } %><br>
   <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
