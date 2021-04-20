@@ -1,5 +1,6 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: %i[ show edit update destroy ]
+  
   def index
     @statuses = Status.all
   end
@@ -13,7 +14,7 @@ class StatusesController < ApplicationController
     if @status.valid?
       @status.user = User.find(params[:id])
       @status.save
-      redirect_to status_path(@status)
+      redirect_to @status
     else
       render :new
     end
@@ -27,7 +28,7 @@ class StatusesController < ApplicationController
 
   def update
     @status.update(status_params)
-    redirect_to status_path(@status)
+    redirect_to @status
   end
 
   def destroy

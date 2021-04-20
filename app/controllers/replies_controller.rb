@@ -1,4 +1,5 @@
 class RepliesController < ApplicationController
+  before_action :set_reply, only: %i [ show edit update destroy ]
   def index
     @replies = Reply.all
   end
@@ -11,7 +12,7 @@ class RepliesController < ApplicationController
     @reply = Reply.new(reply_params)
     if @reply.valid?
       @reply.save
-      redirect_to reply_path(@reply)
+      redirect_to @reply
     else
       render :new
     end
