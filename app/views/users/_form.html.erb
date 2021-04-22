@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= form_for(@user) do |f| %>
+<%= form_with(model: @user) do |f| %>
   <%= f.label :first_name, "First Name" %><br>
   <%= f.text_field :first_name %><br>
 

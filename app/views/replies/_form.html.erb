@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= form_for(@reply) do |f| %>
+<%= form_with(model: @reply) do |f| %>
   <%= f.label :content, "Reply Content" %><br>
   <%= f.text_area :content %><br>
 
