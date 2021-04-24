@@ -1,0 +1,30 @@
+.container {
+  display:grid;
+  height:100vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: .2fr 2fr 1.5fr .2fr;
+  grid-template-areas:
+    "nav nav nav"
+    "sidebar content1 content1"
+    "sidebar content2 content2"
+    "footer footer footer";
+  grid-gap: .2rem;
+}
+.sidebar {
+  background: #B6C649;
+  grid-area: sidebar;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+.messages_list {
+  background: #B6F9C9;
+  grid-area: content1;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+.members_list {
+  background: #C9FFE2;
+  grid-area: content2;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
