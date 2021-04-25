@@ -1,59 +1,103 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles dfined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
-*/
+/* ...
+ *= require_self
+ *= require_tree .
+ */
+
+//  ROOT
+
 :root {
   --main-radius:5px;
   --main-padding:5px;
 }
 nav {
-  background: #4B7F52;
+  background: #ABC4FF;
   grid-area: nav;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
 footer {
-  background: #96E8BC;
+  background: #B6CCFE;
   grid-area: footer;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
-.container {
+
+// SIMPLE CONTAINER
+
+.simple-container {
+  display:grid;
+  height:100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas:
+    "nav"
+    "full-window"
+    "footer";
+  grid-gap: .2rem;
+}
+.full-window {
+  background: #E2EAFC;
+  grid-area: full-window;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+// TWO-SPLIT CONTAINER
+
+.two-split-container {
+  display:grid;
+  height:100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 1fr 50px;
+  grid-template-areas:
+    "nav"
+    "top-window"
+    "bottom-window"
+    "footer";
+  grid-gap: .2rem;
+}
+.top-window {
+  background: #E2EAFC;
+  grid-area: top-window;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+.bottom-window {
+  background: #D7E3FC;
+  grid-area: bottom-window;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+// THREE-SPLIT CONTAINER
+
+.three-split-container {
   display:grid;
   height:100vh;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: .2fr 2fr 1.5fr .2fr;
+  grid-template-rows: 50px 1fr 1fr 50px;
   grid-template-areas:
     "nav nav nav"
-    "sidebar content1 content1"
-    "sidebar content2 content2"
+    "sidebar tr-window tr-window"
+    "sidebar br-window br-window"
     "footer footer footer";
   grid-gap: .2rem;
 }
 .sidebar {
-  background: #B6C649;
+  background: #CCDBFD;
   grid-area: sidebar;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
-.messages_list {
-  background: #B6F9C9;
-  grid-area: content1;
+.top-right-window {
+  background: #E2EAFC;
+  grid-area: tr-window;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
-.members_list {
-  background: #C9FFE2;
-  grid-area: content2;
+.bottom-right-window {
+  background: #D7E3FC;
+  grid-area: br-window;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
 }
