@@ -22,10 +22,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
-gem 'dotenv-rails'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
 gem 'sprockets-rails'
 gem 'jquery-rails'
+gem 'bootstrap-sass'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -39,6 +40,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'benchmark'
   gem 'bigdecimal'
+  gem 'dotenv-rails'
 end
 
 group :development do

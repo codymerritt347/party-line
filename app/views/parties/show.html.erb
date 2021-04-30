@@ -5,13 +5,13 @@
   <h3>Messages</h3>
   <% @party.messages.each do |message| %>
     <div>
-      <b><%= link_to message.user.full_name, message_path(message) %></b><br>
+      <b><%= link_to message.user.screen_name, message_path(message) %></b><br>
       <%= message.created_at %><br>
       <b><%= message.content %></b><br>
       <% if message.replies %>
         <% message.replies.each do |reply| %>
           <div>
-            <%= link_to reply.user.full_name, reply_path(reply) %><br>
+            <%= link_to reply.user.screen_name, reply_path(reply) %><br>
             <%= reply.created_at %><br>
             <b><%= reply.content %></b><br>
           </div>
@@ -24,7 +24,7 @@
   <h3>Party-goers</h3>
   <% @party.users.each do |user| %>
     <div>
-      <%= link_to user.full_name, user_path(user) %><br>
+      <%= link_to user.screen_name, user_path(user) %><br>
     </div>
   <% end %>
 </div>

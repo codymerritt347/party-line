@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :replies, :dependent => :destroy
   accepts_nested_attributes_for :statuses
 
+  has_secure_password
+
   validates :screen_name, {
     presence: true,
     uniqueness: true,
@@ -15,7 +17,6 @@ class User < ApplicationRecord
       minimum: 8,
       maximum: 15,
       message: "must contain 8-15 characters"
-    }
     }
   }
   validates :email, {
