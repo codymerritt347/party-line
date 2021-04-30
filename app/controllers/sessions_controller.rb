@@ -1,13 +1,22 @@
 class SessionsController < ApplicationController
+  def home
+  end
+
+  def new
+  end
+
   def create
-    return redirect_to(controller: 'sessions',
-                       action: 'new') if !params[:name] || params[:name].empty?
-    session[:name] = params[:name]
-    redirect_to controller: 'application', action: 'hello'
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to @user, notice: "Logged In!"
+    else
+      render :new
+    end
   end
 
   def destroy
-    session.delete :name
-    redirect_to controller: 'application', action: 'hello'
+    session[:user_id] = nil
+    redirect_to root_url, notice: "Logged Out!"
   end
 end
