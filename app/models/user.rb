@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :messages, :dependent => :destroy
   has_many :replies, :dependent => :destroy
   accepts_nested_attributes_for :statuses
+  
+  has_secure_password
 
   validates :first_name, {
     presence: true,
@@ -24,7 +26,10 @@ class User < ApplicationRecord
   }
   validates :email, {
     presence: true,
-    uniqueness: true
+    uniqueness: true,
+    format: {  
+      with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  
+    }
   }
   validates :password, {
     presence: true,
@@ -46,10 +51,6 @@ class User < ApplicationRecord
   def make_title_case
     self.first_name = self.first_name.titlecase
     self.last_name = self.last_name.titlecase
-  end
-
-  def current_user
-    User.find_by_id(1)
   end
 
 end
