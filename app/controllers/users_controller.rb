@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   
   def index
+    current_user = User.find_by_id(session[:current_user_id])
     @users = User.all
   end
 
@@ -46,10 +47,6 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find_by_id(params[:id])
-  end
-
   def user_params
     params.require(:user).permit(
       :first_name,
@@ -61,5 +58,12 @@ class UsersController < ApplicationController
         :content
       ]
     )
+  end
+
+  def set_user
+    @user = User.find_by_id(params[:id])
+  end
+
+  def require_login
   end
 end

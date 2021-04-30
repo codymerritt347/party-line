@@ -3,6 +3,7 @@ class SessionController < ApplicationController
   end
 
   def create
+    session[:current_user_id] = @user.id
   end
 
   def destroy
