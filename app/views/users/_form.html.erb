@@ -11,11 +11,8 @@
 
 <%= form_with(model: @user) do |f| %>
   <h3>Sign Up to PartyLine!</h3>
-  <%= f.label :first_name, "First Name" %><br>
-  <%= f.text_field :first_name %><br>
-
-  <%= f.label :last_name, "Last Name" %><br>
-  <%= f.text_field :last_name %><br>
+  <%= f.label :screen_name, "Screen Name" %><br>
+  <%= f.text_field :screen_name %><br>
 
   <%= f.label :email, "Email" %><br>
   <%= f.email_field :email %><br>

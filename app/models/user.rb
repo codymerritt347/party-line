@@ -1,8 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships, :source => :user
   has_many :statuses, :dependent => :destroy
@@ -12,18 +8,14 @@ class User < ApplicationRecord
   has_many :replies, :dependent => :destroy
   accepts_nested_attributes_for :statuses
 
-  validates :first_name, {
+  validates :screen_name, {
     presence: true,
-    format: {
-      without: /[0-9]/,
-      message: "does not allow numbers"
+    uniqueness: true,
+    length: {
+      minimum: 8,
+      maximum: 15,
+      message: "must contain 8-15 characters"
     }
-  }
-  validates :last_name, {
-    presence: true,
-    format: {
-      without: /[0-9]/,
-      message: "does not allow numbers"
     }
   }
   validates :email, {
@@ -42,17 +34,6 @@ class User < ApplicationRecord
     }
   }
 
-  before_create :make_title_case
-
-  def full_name
-    "#{self.first_name} #{self.last_name}"
-  end
-
   private
-
-  def make_title_case
-    self.first_name = self.first_name.titlecase
-    self.last_name = self.last_name.titlecase
-  end
 
 end

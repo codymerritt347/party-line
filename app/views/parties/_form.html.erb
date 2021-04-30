@@ -14,7 +14,7 @@
   <%= f.text_field :name %><br>
 
   <%= f.label :party_goers, "Party-Goers" %><br>
-  <%= f.collection_check_boxes :user_ids, User.all, :id, :first_name %><br>
+  <%= f.collection_check_boxes :user_ids, User.all, :id, :screen_name %><br>
   <br>
 
   <%= f.submit %>

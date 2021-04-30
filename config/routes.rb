@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'welcome/home'
   get '/', to: "sessions#home"
+  get '/auth/:provider/callback' => 'sessions#omniauth'
   get '/signup', to: "users#new"
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
-  post '/logout', to: "sessions#destroy"
+  delete '/logout', to: "sessions#destroy"
   
   resources :users do
     resources :statuses
