@@ -11,8 +11,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    if @message.valid?
-      @message.save
+    if @message.save
       redirect_to @message
     else
       render :new
@@ -33,9 +32,9 @@ class MessagesController < ApplicationController
   def destroy
     if @message
       @message.destroy
-      redirect_to messages_path, notice: "Message deleted"
+      redirect_to messages_path, error: "Message deleted"
     else
-      redirect_to messages_path, notice: "Message not found"
+      redirect_to messages_path, error: "Message not found"
     end
   end
 

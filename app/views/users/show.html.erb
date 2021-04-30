@@ -3,21 +3,19 @@
 </div>
 <div>
   <h3>Current Status:</h3>
-  <%= @user.statuses.last.content %>
+  <%= @user.statuses.last.content %><br>
+  <%= link_to "New Status", new_user_status_path(@user) %><br>
 </div>
 <div>
   <h3><%= @user.first_name %>'s Parties</h3>
-  <% @user.parties.each do |party| %>
-    <%= link_to party.name, party %><br>
+  <% if @user.parties.count != 0 %>
+    <% @user.parties.each do |party| %>
+      <%= link_to party.name, party %><br>
+    <% end %>
+  <% else %>
+    <h4>You have no parties. Let's start one!</h4>
   <% end %>
-</div>
-<div>
-  <%= link_to "New Status", new_user_status_path(@user) %>
   <%= link_to "New Party", new_party_path %><br>
-  <%= link_to "New Message", new_message_path %><br>
-</div>
-<div>
-  <%= link_to "All Users", users_path %><br>
 </div>
 <div>
   <%= link_to "Edit User", edit_user_path(@user) %><br>
@@ -26,3 +24,5 @@
   <input type=submit value='logout'>
 <% end %>
 </div>
+
+<div class="">

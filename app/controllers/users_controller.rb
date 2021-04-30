@@ -7,16 +7,15 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    if @user.statuses.count == 0
-      @user.statuses.build
-    end
+    @user.statuses.build
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      redirect_to @user, success: "User successfully created!"
     else
+      flash.now[:error] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
