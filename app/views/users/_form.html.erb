@@ -10,6 +10,7 @@
 <% end %>
 
 <%= form_with(model: @user) do |f| %>
+  <h3>Sign Up to PartyLine!</h3>
   <%= f.label :first_name, "First Name" %><br>
   <%= f.text_field :first_name %><br>
 
@@ -17,15 +18,19 @@
   <%= f.text_field :last_name %><br>
 
   <%= f.label :email, "Email" %><br>
-  <%= f.text_field :email %><br>
+  <%= f.email_field :email %><br>
 
   <%= f.label :password, "Password" %><br>
-  <%= f.text_field :password %><br>
+  <%= f.password_field :password %><br>
 
-  <h3>Why don't you create a first status update? Status updates tell the other party goers how you are doing.</h3>
+  <%= f.label :password_confirmation, "Confirm Password" %><br>
+  <%= f.password_field :password_confirmation %><br>
+
+  <h3>Why don't you create a first status update?<br>
+  Status updates tell the other party goers how you are doing.</h3>
   <%= f.fields_for :statuses do |status_form| %>
     <%= status_form.label :content, "First Status Update" %><br>
-    <%= status_form.text_field :content %><br>
+    <%= status_form.text_area :content %><br>
   <% end %>
 
   <%= f.submit %>

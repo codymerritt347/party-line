@@ -54,6 +54,7 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :password,
+      :password_confirmation,
       statuses_attributes: [
         :user_id,
         :content
@@ -65,6 +66,4 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
   end
 
-  def require_login
-  end
 end
