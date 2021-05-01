@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_many :friendships, :dependent => :destroy
-  has_many :friends, :through => :friendships, :source => :user
   has_many :statuses, :dependent => :destroy
   has_many :user_parties, :dependent => :destroy
   has_many :parties, through: :user_parties, :dependent => :destroy

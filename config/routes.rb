@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
   
   resources :users do
-    resources :statuses
+    resources :statuses, shallow: true
   end
-  resources :friendships
-  resources :parties
-  resources :messages do
-    resources :replies
+  resources :parties do
+    resources :messages
   end
+  resources :replies
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

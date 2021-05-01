@@ -13,6 +13,7 @@ class PartiesController < ApplicationController
   def create
     @party = Party.new(party_params)
     if @party.valid?
+      current_user.parties << @party
       @party.save
       redirect_to @party
     else

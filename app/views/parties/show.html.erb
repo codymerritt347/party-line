@@ -20,16 +20,25 @@
     </div>
   <% end %>
 </div>
+<%= form_for Message.new do |f| %>
+  <%= f.label :content, "Message Content"%><br>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :party_id, @party.id %>
+  <%= f.submit %>
+<% end %>
 <div>
   <h3>Party-goers</h3>
-  <% @party.users.each do |user| %>
-    <div>
-      <%= link_to user.screen_name, user_path(user) %><br>
-    </div>
+  <% if @party.users.count > 0 %>
+    <% @party.users.each do |user| %>
+      <div>
+        <%= link_to user.screen_name, user_path(user) %><br>
+      </div>
+    <% end %>
+  <% else %>
+    <h4>There are no party goers yet!</h4>
   <% end %>
 </div>
 <div>
-  <%= link_to "New Message", new_message_path %><br>
-  <%= link_to "Edit Party", edit_party_path(@party) %><br>
+  <%= link_to "Edit Party List", edit_party_path(@party) %><br>
   <%= button_to "Delete Party", party_path(@party), method: :delete, data: { confirm: "Are you sure?" } %><br>
 </div>

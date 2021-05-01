@@ -6,10 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    def create
-      @user = User.find_or_create_from_auth_hash(auth_hash)
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to @user, notice: "Logged In!"
+    else
+      render :new
     end
   end
 
@@ -26,8 +28,5 @@ class SessionsController < ApplicationController
   end
 
   private
-  
-  def auth_hash
-    request.env['omniauth.auth']
-  end
+
 end

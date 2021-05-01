@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   
   def index
-    current_user = User.find_by_id(session[:current_user_id])
     @users = User.all
   end
 
