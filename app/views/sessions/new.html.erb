@@ -1,14 +1,11 @@
 <h1>Log In</h1>
-<%= form_tag login_path do %>
-<div>
-<%= label_tag :email %><br>
-<%= text_field_tag :email %>
-</div>
-  <div>
-    <%= label_tag :password %><br>
-<%= password_field_tag :password %>
-</div>
-  <div>
-    <%= submit_tag "Log In" %>
-</div>
+
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :email, "📧 Email:" %><br>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :password, "🔑 Password:" %><br>
+  <%= f.password_field :password %><br>
+
+  <%= f.submit "Log In", class:"blueButton" %>
 <% end %>

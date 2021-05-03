@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get '/', to: "sessions#home"
-  get '/auth/:provider/callback', to: 'sessions#create'
-  get '/signup', to: "users#new"
-  get '/login', to: "sessions#new"
-  post '/login', to: "sessions#create"
-  delete '/logout', to: "sessions#destroy"
+  root "sessions#home"
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
   
   resources :users do
     resources :statuses, shallow: true

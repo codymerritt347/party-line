@@ -5,10 +5,8 @@
   </div>
 
   <nav>
-      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-        <input type=submit value='logout' class="redButton">
-      <% end %>
-      <%= link_to "New Status", new_user_status_path(@user), class:"blueButton" %>
+    <%= link_to "Logout", logout_path, method: :delete %>
+    <%= link_to "New Status", new_user_status_path(@user), class:"blueButton" %>
   </nav>
 
   <div class="full-window">

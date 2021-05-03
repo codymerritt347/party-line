@@ -6,25 +6,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to @user, notice: "Logged In!"
+    @user = User.find_by(email: params[:session][:email].downcase)
+    if @user && @user.authenticate(params[:session][:password])
+      helpers.log_in(@user)
+      redirect_to @user
     else
-      render :new, notice: "Incorrect!"
+      flash[:danger] = "Invalid email/password combination"
+      render :new
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    session.clear
     redirect_to root_url, notice: "Logged Out!"
-  end
-
-  def omniauth
-    @user = User.from_omniauth(auth)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to home_path
   end
 
   private
