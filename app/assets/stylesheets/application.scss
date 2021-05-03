@@ -92,6 +92,31 @@ body {
 	top:1px;
 }
 
+.redButton {
+	box-shadow:inset 0px 1px 0px 0px #f7c5c0;
+	background:linear-gradient(to bottom, #fc8d83 5%, #e4685d 100%);
+	background-color:#fc8d83;
+	border-radius:6px;
+	border:1px solid #d83526;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+}
+.redButton:hover {
+	background:linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
+	background-color:#e4685d;
+}
+.redButton:active {
+	position:relative;
+	top:1px;
+}
+
 // FORMS
 
 input[type=text], input[type=email], input[type=password] {
@@ -110,7 +135,8 @@ textarea {
   resize: none;
   background-color: #9ECFF7;
   color: white;
-  width: 25%;
+  width: 35%;
+  height: 150px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -119,13 +145,39 @@ textarea {
   border-radius: var(--main-radius)
 }
 
+// STATUS
+
+.status-bubble {
+	position: relative;
+	background: hsl(185, 100%, 37%);
+	border-radius: .4em;
+  width: fit-content;
+  padding: 10px 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.status-bubble:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom-color: #00aabb;
+	border-top: 0;
+	border-left: 0;
+	margin-left: -10px;
+	margin-top: -20px;
+}
+
 // DISPLAY
 
 .banner {
   grid-area: banner;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
-  text-align: l;
 }
 
 nav {

@@ -26,7 +26,8 @@
   <%= f.fields_for :statuses do |status_form| %>
     <%= status_form.label :content, "💬 First Status Update:" %><br>
     <p>Status messages are a way to tell your fellow party-goers how you're doing or if you're available to chat<p>
-    <%= status_form.text_area :content %><br>
+    <p>(Max of 281 characters, beat that Twitter!)</p>
+    <%= status_form.text_area :content, maxlength: 281 %><br>
   <% end %>
 
   <%= f.submit class: "blueButton" %>

@@ -1,28 +1,45 @@
-<div>
-  <h1><%= @user.screen_name %></h1>
+<div class="simple-container">
+
+  <div class="banner">
+    PartyLine
+  </div>
+
+  <nav>
+      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <input type=submit value='logout' class="redButton">
+      <% end %>
+      <%= link_to "New Status", new_user_status_path(@user), class:"blueButton" %>
+  </nav>
+
+  <div class="full-window">
+    <div>
+      <h1><%= @user.screen_name %></h1>
+    </div>
+    <div class="status-bubble">
+      <%= @user.statuses.last.content %>
+    </div>
+    <div>
+      <%= @user.statuses.last.hours_ago %>
+    </div>
+    <div>
+      <h3><%= @user.screen_name %>'s Parties</h3>
+      <% if @user.parties.count != 0 %>
+        <% @user.parties.each do |party| %>
+          <%= link_to party.name, party %><br>
+        <% end %>
+      <% else %>
+        <h4>You have no parties. Let's start one!</h4>
+      <% end %>
+      <%= link_to "New Party", new_party_path, class:"blueButton" %><br>
+    </div>
+  </div>
+
+  <footer>
+  </footer>
 </div>
-<div>
-  <h3>Current Status:</h3>
-  <%= @user.statuses.last.content %><br>
-  <%= link_to "New Status", new_user_status_path(@user) %><br>
-</div>
-<div>
-  <h3><%= @user.screen_name %>'s Parties</h3>
-  <% if @user.parties.count != 0 %>
-    <% @user.parties.each do |party| %>
-      <%= link_to party.name, party %><br>
-    <% end %>
-  <% else %>
-    <h4>You have no parties. Let's start one!</h4>
-  <% end %>
-  <%= link_to "New Party", new_party_path %><br>
-</div>
+
 <div>
   <%= link_to "Edit User", edit_user_path(@user) %><br>
   <%= button_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure?" } %><br>
-  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-<% end %>
+  
 </div>
-
-<div class="">

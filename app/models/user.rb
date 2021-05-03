@@ -31,7 +31,7 @@ class User < ApplicationRecord
       message: "must contain 6-20 characters"
     }
   }
-
+  
   private
 
 end
