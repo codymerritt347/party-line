@@ -7,13 +7,6 @@
   <%= @message.content %><br>
 </div>
 <div>
-  <h3>Replies</h3>
-  <% @message.replies.each do |reply| %>
-    <%= reply.created_at %><br>
-    <%= link_to reply.content, reply_path(reply) %><br>
-  <% end %>
-</div>
-<div>
   <h4>From</h3>
   <%= link_to @message.party.name, party_path(@message.party) %>
 </div>

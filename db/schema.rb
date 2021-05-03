@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_04_30_152325) do
 
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "messages", force: :cascade do |t|
     t.integer "party_id", null: false
     t.integer "user_id", null: false
@@ -33,16 +26,6 @@ ActiveRecord::Schema.define(version: 2021_04_30_152325) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "replies", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "message_id", null: false
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["message_id"], name: "index_replies_on_message_id"
-    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -74,8 +57,6 @@ ActiveRecord::Schema.define(version: 2021_04_30_152325) do
 
   add_foreign_key "messages", "parties"
   add_foreign_key "messages", "users"
-  add_foreign_key "replies", "messages"
-  add_foreign_key "replies", "users"
   add_foreign_key "statuses", "users"
   add_foreign_key "user_parties", "parties"
   add_foreign_key "user_parties", "users"

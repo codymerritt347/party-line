@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :statuses, shallow: true
+    resources :messages, shallow: true
   end
   resources :parties do
     resources :messages
   end
-  resources :replies
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

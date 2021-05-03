@@ -8,15 +8,6 @@
       <b><%= link_to message.user.screen_name, message_path(message) %></b><br>
       <%= message.created_at %><br>
       <b><%= message.content %></b><br>
-      <% if message.replies %>
-        <% message.replies.each do |reply| %>
-          <div>
-            <%= link_to reply.user.screen_name, reply_path(reply) %><br>
-            <%= reply.created_at %><br>
-            <b><%= reply.content %></b><br>
-          </div>
-        <% end %>
-      <% end %>
     </div>
   <% end %>
 </div>

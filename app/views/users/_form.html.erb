@@ -10,25 +10,24 @@
 <% end %>
 
 <%= form_with(model: @user) do |f| %>
-  <h3>Sign Up to PartyLine!</h3>
-  <%= f.label :screen_name, "Screen Name" %><br>
+  <%= f.label :screen_name, "👤 Screen Name:" %><br>
+  <p>This is your unique screen name that users will use to identify and find you!<p>
   <%= f.text_field :screen_name %><br>
 
-  <%= f.label :email, "Email" %><br>
+  <%= f.label :email, "📧 Email:" %><br>
   <%= f.email_field :email %><br>
 
-  <%= f.label :password, "Password" %><br>
+  <%= f.label :password, "🔑 Password:" %><br>
   <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation, "Confirm Password" %><br>
+  <%= f.label :password_confirmation, "🔑 Confirm Password:" %><br>
   <%= f.password_field :password_confirmation %><br>
 
-  <h3>Why don't you create a first status update?<br>
-  Status updates tell the other party goers how you are doing.</h3>
   <%= f.fields_for :statuses do |status_form| %>
-    <%= status_form.label :content, "First Status Update" %><br>
+    <%= status_form.label :content, "💬 First Status Update:" %><br>
+    <p>Status messages are a way to tell your fellow party-goers how you're doing or if you're available to chat<p>
     <%= status_form.text_area :content %><br>
   <% end %>
 
-  <%= f.submit %>
+  <%= f.submit class: "blueButton" %>
 <% end %>

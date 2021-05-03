@@ -1,12 +1,16 @@
 <div class="simple-container">
-  <nav></nav>
+  <div class="banner">
+    PartyLine
+  </div>
+  <nav>
+  </nav>
   <div class="full-window">
-    <h1>Welcome to PartyLine.</h1>
+    <h1>🎉 Welcome to PartyLine! 🎉</h1>
     <h3>A lightweight group messaging platform</h3>
     <h4>To get started, Sign Up or Log In below.</h4>
-    <%= link_to "Sign Up", signup_path %><br>
-    <%= link_to "Log In", login_path %><br>
-    <%= link_to "Connect Twitter", "/auth/twitter", method: :post %>
+    <%= link_to "Sign Up", signup_path, class: "greenButton" %>
+    <%= link_to "Log In", login_path, class: "orangeButton" %>
+    <%= link_to "Connect with Twitter", "/auth/twitter", method: :post, class: "blueButton" %>
   </div>
   <footer></footer>
 </div>
