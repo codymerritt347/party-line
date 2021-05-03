@@ -5,7 +5,7 @@
   </div>
 
   <nav>
-    <%= link_to "Logout", logout_path, method: :delete %>
+    <%= button_to "Logout", logout_path, method: :delete, class:"redButton" %>
     <%= link_to "New Status", new_user_status_path(@user), class:"blueButton" %>
   </nav>
 
