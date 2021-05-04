@@ -2,18 +2,17 @@ class PartiesController < ApplicationController
   before_action :set_party, only: %i[ show edit update destroy ]
   
   def index
-    @parties = helpers.current_user.parties
+    @parties = current_user.parties
   end
 
   def new
-    @party = Party.new
+    @party = current_user.parties.build
   end
 
   def create
-    @party = Party.new(party_params)
-    if @party.valid?
-      helpers.current_user.parties << @party
-      @party.save
+    @party = current_user.parties.build(party_params)
+    if @party.save
+      current_user.save
       redirect_to @party
     else
       render :new

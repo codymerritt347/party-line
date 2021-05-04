@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :require_login, only: [:new, :create]
   
   def index
     @users = User.all
@@ -57,7 +58,8 @@ class UsersController < ApplicationController
       statuses_attributes: [
         :user_id,
         :content
-      ]
+      ],
+      party_ids: []
     )
   end
 

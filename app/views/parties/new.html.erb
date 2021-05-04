@@ -1,13 +1,13 @@
-<div class="errorWindow">
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <% @user.errors.each do |error| %>
-        <p><%= error.full_message %></p>
-      <% end %>
+<% if @party.errors.any? %>
+  <div class="errorWindow">
+    <h2><%= pluralize(@party.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% @party.errors.each do |error| %>
+      <p><%= error.full_message %></p>
+    <% end %>
   </div>
-  <% end %>
-</div>
+<% end %>
 
-<h1 class="newPartyContainer">New Party</h1>
-<%= render "form" %>
+<div class="simpleWindow">
+  <h1>🎉 New Party 🎉</h1>
+  <%= render "form" %>
+</div>

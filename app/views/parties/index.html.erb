@@ -1,46 +1,23 @@
-<%
-=begin%>
- <% if !params[:name].blank? %>
-  <% @parties = Party.where(name: params[:name]) %>
-<% end %>
-  <h1>All Parties</h1>
+<% if @parties.count != 0 %>
   <% @parties.each do |party| %>
-      <%= link_to party.name, party %>
+    <div class="simpleWindow">
+      <%= link_to party.name, party %><br>
+      <h3>Party Goers:</h3>
+      <% party.users.each do |user| %>
+        <%= user.screen_name %><br>
+      <% end %><br>
+      <div class="flex-container">
+        <%= link_to "Edit Party", edit_party_path(party), class:"orange button" %>
+        <%= button_to "Delete Party", party, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
+      </div>
+    </div>
   <% end %>
+<% else %>
+  <div class="simpleWindow">
+    <h4>You have no parties. Let's start one!</h4>
+  </div>
+<% end %>
 
-  <h3>Filter Posts</h3>
-  <%= form_tag("/parties", method: "get") do %>
-    <%= select_tag "name", options_from_collection_for_select(Party.all, "name", "name"), include_blank: true %>
-    <%= submit_tag "Filter" %>
-  <% end %> 
-<%
-=end%>
-<div class="sidebar">
-  <ul>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-  </ul>
-</div>
-
-<div class="messages_list">
-  <ul>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-  </ul>
-</div>
-
-<div class="members_list">
-  <ul>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-  </ul>
+<div class="flex-container">
+  <%= link_to "New Party", new_party_path, class:"blue button" %>
 </div>

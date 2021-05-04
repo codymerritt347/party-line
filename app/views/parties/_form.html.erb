@@ -1,24 +1,7 @@
-<div class="errors">
-  <% if @party.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
-      <ul>
-        <% @party.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-</div>
+<%= form_for @party do |f| %>
+  <%= f.label :name, "Party Name" %><br>
+  <%= f.text_field :name %><br>
 
-<div>
-  <%= form_with(model: @party) do |f| %>
-    <%= f.label :name, "Party Name" %><br>
-    <%= f.text_field :name %><br>
-
-    <%= f.label :party_goers, "Party-Goers" %>
-    <%= f.collection_check_boxes(:user_ids, User.everyone_else, :id, :screen_name) %>
-
-    <%= f.submit %>
-  <% end %>
-</div>
+  <%= f.collection_check_boxes(:user_ids, User.all, :id, :screen_name) %>
+  <%= f.submit %>
+<% end %>
