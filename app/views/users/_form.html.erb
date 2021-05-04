@@ -11,13 +11,11 @@
 
   <%= f.label :password_confirmation, "🔑 Confirm Password:" %><br>
   <%= f.password_field :password_confirmation %><br>
-
   <%= f.fields_for :statuses do |status_form| %>
     <%= status_form.label :content, "💬 First Status Update:" %><br>
     <p>Status messages are a way to tell your fellow party-goers<br>how you're doing or if you're available to chat.<p>
     <p><i>(Max of 281 characters, beat that Twitter!)</i></p>
     <%= status_form.text_area :content, maxlength: 281 %><br>
   <% end %>
-
-  <%= f.submit class: "blueButton" %>
+    <%= f.submit class: "blueButton" %>
 <% end %>

@@ -1,6 +1,6 @@
 <%= form_with(model: [@user,@status], local: true) do |f| %>
-  <%= f.label :content %><br>
+  <%= f.label :content, "What do you want to say?" %><br>
   <%= f.text_field :content %><br>
   
-  <%= f.submit %>
+  <%= f.submit class:"greenButton" %>
 <% end %>

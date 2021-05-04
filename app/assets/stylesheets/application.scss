@@ -29,8 +29,8 @@ body {
 
 .simpleWindow {
   background-color: rgba(255, 255, 255, 0.5);
-  width: fit-content;
-  margin: auto;
+  width: 50%;
+  margin: 20px auto;
   border-radius: 1rem;
   text-align: center;
   padding: 20px 60px;
@@ -152,7 +152,7 @@ body {
 input[type=text], input[type=email], input[type=password] {
   background-color: #9ECFF7;
   color: white;
-  width: 50%;
+  width: 60%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -165,7 +165,7 @@ textarea {
   resize: none;
   background-color: #9ECFF7;
   color: white;
-  width: 50%;
+  width: 70%;
   height: 150px;
   padding: 12px 20px;
   margin: 8px 0;

@@ -1,8 +1,5 @@
-<div class="mainWindow">
+<div class="simpleWindow">
   <h1>Log In</h1>
-</div>
-
-<div class="mainWindow">
   <%= form_for(:session, url: login_path) do |f| %>
     <%= f.label :email, "📧 Email:" %><br>
     <%= f.text_field :email %><br>
