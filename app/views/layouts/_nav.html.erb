@@ -1,7 +1,7 @@
 <nav>
   <% if logged_in? %>
     <%= button_to "Logout", logout_path, class:"orangeButton", method: :delete, data: { confirm: "Are you sure?" } %>
-  <% elsif current_page?('/login')%>
+  <% elsif current_page?(login_path) %>
     <%= link_to "Home", root_url, class:"orangeButton" %>
   <% else %>
     <%= link_to "Login", login_path, class:"orangeButton" %>

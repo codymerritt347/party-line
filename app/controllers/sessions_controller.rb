@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:error] =  "Invalid email/password combination"
-      render :new
+      redirect_to login_path
     end
   end
 
