@@ -122,7 +122,7 @@ body {
 input[type=text], input[type=email], input[type=password] {
   background-color: #9ECFF7;
   color: white;
-  width: 25%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -135,7 +135,7 @@ textarea {
   resize: none;
   background-color: #9ECFF7;
   color: white;
-  width: 35%;
+  width: 50%;
   height: 150px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -269,5 +269,40 @@ footer {
   padding-top: var(--main-padding);
 }
 
-// NEW PARTY FORM
+// WINDOWS
 
+.mainWindow {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 50%;
+  margin: 20px auto 20px auto;
+  padding: 20px 60px;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.errorWindow {
+  background-color: rgba(247, 65, 65, 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 30px;
+  border-radius: 1rem;
+  text-align: center;
+}

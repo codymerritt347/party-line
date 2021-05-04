@@ -10,16 +10,15 @@
   </nav>
 
   <div class="full-window">
-    <div>
+    <div class="mainWindow">
       <h1><%= @user.screen_name %></h1>
-    </div>
-    <div class="status-bubble">
-      <%= @user.statuses.last.content %>
-    </div>
-    <div>
+      <div class="status-bubble">
+        <%= @user.statuses.last.content %>
+      </div>
       <%= @user.statuses.last.hours_ago %>
+      <%= render partial: "statuses/form", user:@user %>
     </div>
-    <div>
+    <div class="mainWindow">
       <h3><%= @user.screen_name %>'s Parties</h3>
       <% if @user.parties.count != 0 %>
         <% @user.parties.each do |party| %>

@@ -4,13 +4,15 @@
   </div>
   <nav>
   </nav>
-  <div class="full-window">
-    <h1>🎉 Welcome to PartyLine! 🎉</h1>
-    <h3>A lightweight group messaging platform</h3>
-    <h4>To get started, Sign Up or Log In below.</h4>
-    <%= link_to "Sign Up", signup_path, class: "greenButton" %>
-    <%= link_to "Log In", login_path, class: "orangeButton" %>
-    <%= link_to "Connect with Twitter", "/auth/twitter", method: :post, class: "blueButton" %>
+  <div class="mainWindow">
+    <div>
+      <h1>🎉 Welcome to PartyLine! 🎉</h1>
+      <h3>A lightweight group messaging platform</h3>
+      <h4>To get started, Sign Up or Log In below.</h4>
+      <%= link_to "Sign Up", signup_path, class: "greenButton" %><br><br>
+      <%= link_to "Log In", login_path, class: "orangeButton" %><br><br>
+      <%= link_to "Connect with Twitter", "/auth/twitter", method: :post, class: "blueButton" %>
+    </div>
   </div>
   <footer></footer>
 </div>

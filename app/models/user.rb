@@ -1,8 +1,12 @@
 class User < ApplicationRecord
+
+  scope :everyone_else, -> { User.where("id != ?", user.id) }
+
   has_many :statuses, :dependent => :destroy
   has_many :user_parties, :dependent => :destroy
   has_many :parties, through: :user_parties
   has_many :messages, :dependent => :destroy
+  
   accepts_nested_attributes_for :statuses
 
   has_secure_password

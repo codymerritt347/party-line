@@ -16,10 +16,8 @@
     <%= f.label :name, "Party Name" %><br>
     <%= f.text_field :name %><br>
 
-      <%= f.label :party_goers, "Party-Goers" %>
-      <div>
-        <%= f.collection_check_boxes(:user_ids, User.everyone_else, :id, :screen_name) %>
-      </div>
+    <%= f.label :party_goers, "Party-Goers" %>
+    <%= f.collection_check_boxes(:user_ids, User.everyone_else, :id, :screen_name) %>
 
     <%= f.submit %>
   <% end %>

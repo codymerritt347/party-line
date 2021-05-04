@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @status = Status.new
   end
 
   def edit

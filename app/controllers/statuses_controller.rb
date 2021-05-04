@@ -1,6 +1,6 @@
 class StatusesController < ApplicationController
   before_action :get_user, except: [:show]
-  before_action :set_status, only: %i[ show edit update destroy ]
+  before_action :set_status, only: [:show, :edit, :update, :destroy]
   
   def index
     @statuses = @user.statuses
@@ -11,7 +11,7 @@ class StatusesController < ApplicationController
   end
 
   def create
-    @status = @user.statuses.new(status_params)
+    @status = @user.statuses.build(status_params)
     if @status.save
       redirect_to @user
     else
@@ -45,11 +45,11 @@ class StatusesController < ApplicationController
   private
 
   def get_user
-    @user = User.find_by_id(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def set_status
-    @status = @user.statuses.find_by_id(params[:id])
+    @status = @user.statuses.find(params[:id])
   end
 
   def status_params

@@ -1,8 +1,10 @@
 <div>
   <% @statuses.each do |status| %>
     <div>
-      <%= status.created_at %><br>
       <%= status.content %><br>
+      <%= status.hours_ago %><br>
+      <%= link_to 'Edit Status', edit_user_status_path(@user, status) %><br>
+      <%= link_to 'Delete Status', [@user, status], method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   <% end %>
 </div>

@@ -6,11 +6,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :users do
     resources :statuses, shallow: true
-    resources :messages, shallow: true
   end
   resources :parties do
-    resources :messages
+    resources :messages, shallow: true
   end
-  resources :statuses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
