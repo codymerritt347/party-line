@@ -1,6 +1,6 @@
-<%= form_tag new_user_status do |f| %>
+<%= form_for [@user, @status] do |f| %>
   <%= f.label :content %><br>
   <%= f.text_field :content %><br>
-  <br>
+  
   <%= f.submit %>
 <% end %>

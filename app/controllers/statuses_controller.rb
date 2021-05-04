@@ -1,19 +1,19 @@
 class StatusesController < ApplicationController
+  before_action :get_user, except: [:show]
   before_action :set_status, only: %i[ show edit update destroy ]
   
   def index
-    @statuses = Status.all
+    @statuses = @user.statuses
   end
 
   def new
-    @status = Status.new
+    @status = @user.statuses.build
   end
 
   def create
-    @status = Status.new(status_params)
-    if @status.valid?
-      @status.save
-      redirect_to @status
+    @status = @user.statuses.new(status_params)
+    if @status.save
+      redirect_to @user
     else
       render :new
     end
@@ -26,8 +26,11 @@ class StatusesController < ApplicationController
   end
 
   def update
-    @status.update(status_params)
-    redirect_to @status
+    if @status.update(status_params)
+      redirect_to user_status_path(@user)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -41,8 +44,12 @@ class StatusesController < ApplicationController
 
   private
 
+  def get_user
+    @user = User.find_by_id(params[:user_id])
+  end
+
   def set_status
-    @status = Status.find_by_id(params[:id])
+    @status = @user.statuses.find_by_id(params[:id])
   end
 
   def status_params

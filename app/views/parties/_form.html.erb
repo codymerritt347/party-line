@@ -8,7 +8,7 @@
     </ul>
   </div>
 <% end %>
-
+<div class="newPartyContainer">
 <%= form_with(model: @party) do |f| %>
   <%= f.label :name, "Party Name" %><br>
   <%= f.text_field :name %><br>
@@ -19,3 +19,4 @@
 
   <%= f.submit %>
 <% end %>
+</div>
