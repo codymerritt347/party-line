@@ -1,0 +1,30 @@
+.status-bubble {
+	position: relative;
+	background: hsl(185, 100%, 37%);
+	border-radius: .4em;
+  width: fit-content;
+  padding: 10px 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.status-bubble:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom-color: #00aabb;
+	border-top: 0;
+	border-left: 0;
+	margin-left: -10px;
+	margin-top: -20px;
+}
+
+.status-window {
+  text-align: left;
+  width: 50%;
+  margin: 10px auto;
+}

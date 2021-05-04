@@ -2,7 +2,9 @@
   <h1>🎉 Welcome to PartyLine! 🎉</h1>
   <h3>A lightweight group messaging platform</h3>
   <h4>To get started, Sign Up or Log In below.</h4>
-  <%= link_to "Sign Up", signup_path, class: "green button" %><br><br>
-  <%= link_to "Log In", login_path, class: "orange button" %><br><br>
-  <%= link_to "Connect with Twitter", "/auth/twitter", method: :post, class: "blue button" %>
+  <div class="flex-container">
+    <%= link_to "Sign Up", signup_path, class: "green button" %><br><br>
+    <%= link_to "Log In", login_path, class: "orange button" %><br><br>
+    <%= link_to "Connect with Twitter", "/auth/twitter", method: :post, class: "blue button" %>
+  </div>
 </div>

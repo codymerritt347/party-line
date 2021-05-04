@@ -39,7 +39,7 @@ body {
 .errorWindow {
   background-color: rgba(247, 65, 65, 0.5);
   width: fit-content;
-  margin: auto;
+  margin: 20px auto;
   border-radius: 1rem;
   text-align: center;
   padding: 20px 60px;
@@ -157,29 +157,3 @@ textarea {
   border-radius: var(--main-radius)
 }
 
-// STATUS BUBBLE
-
-.status-bubble {
-	position: relative;
-	background: hsl(185, 100%, 37%);
-	border-radius: .4em;
-  width: fit-content;
-  padding: 10px 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.status-bubble:after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-bottom-color: #00aabb;
-	border-top: 0;
-	border-left: 0;
-	margin-left: -10px;
-	margin-top: -20px;
-}

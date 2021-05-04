@@ -1,5 +1,5 @@
 class StatusesController < ApplicationController
-  before_action :get_user, except: [:show]
+  before_action :get_user
   before_action :set_status, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -27,7 +27,7 @@ class StatusesController < ApplicationController
 
   def update
     if @status.update(status_params)
-      redirect_to user_status_path(@user)
+      redirect_to user_statuses_path(@user)
     else
       render :edit
     end
@@ -36,9 +36,9 @@ class StatusesController < ApplicationController
   def destroy
     if @status
       @status.destroy
-      redirect_to statuses_path, notice: "Status deleted"
+      redirect_to user_statuses_path(@user), notice: "Status deleted"
     else
-      redirect_to statuses_path, notice: "Status not found"
+      redirect_to user_statuses_path(@user), notice: "Status not found"
     end
   end
 
@@ -49,7 +49,7 @@ class StatusesController < ApplicationController
   end
 
   def set_status
-    @status = @user.statuses.find(params[:id])
+    @status = Status.find_by_id(params[:id])
   end
 
   def status_params

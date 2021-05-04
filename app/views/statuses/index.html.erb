@@ -1,10 +1,18 @@
-<div>
+<% if @statuses.count != 0 %>
   <% @statuses.each do |status| %>
-    <div>
+    <div class="simpleWindow">
+      <%= status.user.screen_name %><br>
       <%= status.content %><br>
-      <%= status.hours_ago %><br>
-      <%= link_to 'Edit Status', edit_user_status_path(@user, status) %><br>
-      <%= link_to 'Delete Status', [@user, status], method: :delete, data: { confirm: "Are you sure?" } %>
+      <i><%= status.hours_ago %></i><br><br>
+      <div class="flex-container">
+        <%= link_to 'Edit Status', edit_user_status_path(@user, status), class:"orange button" %><br>
+        <%= button_to 'Delete Status', [@user,status], method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
+      </div>
     </div>
   <% end %>
-</div>
+<% else %>
+  <div class="simpleWindow">
+  <h1>You have no statuses!</h1>
+  <%= link_to "New Status", new_user_status_path(@user), class:"green button" %>
+  </div>
+<% end %>

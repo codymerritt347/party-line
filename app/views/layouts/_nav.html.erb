@@ -1,12 +1,14 @@
 <nav>
   <div class="flex-container">
     <% if logged_in? %>
-      <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, class:"orange button" %>
+      <%= link_to "Dashboard", user_path(@user), class:"blue button" %>
       <%= link_to "Statuses", user_statuses_path(@user), class:"green button" %>
+      <%= link_to "Parties", parties_path, class:"orange button" %>
+      <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
     <% elsif current_page?(login_path) %>
       <%= link_to "Home", root_url, class:"orange button" %>
     <% else %>
-      <%= link_to "Login", login_path, class:"orange button" %>
+      <%= link_to "Login", login_path, class:"orange button" unless current_page?(root_path) %>
     <% end %>
   </div>
 </nav>
