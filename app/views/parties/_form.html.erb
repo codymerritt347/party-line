@@ -1,22 +1,26 @@
-<% if @party.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
-    <ul>
-      <% @party.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-<div class="newPartyContainer">
-<%= form_with(model: @party) do |f| %>
-  <%= f.label :name, "Party Name" %><br>
-  <%= f.text_field :name %><br>
+<div class="errors">
+  <% if @party.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@party.errors.count, "error") %> prohibited this party from being saved:</h2>
+      <ul>
+        <% @party.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
 
-  <%= f.label :party_goers, "Party-Goers" %><br>
-  <%= f.collection_check_boxes :user_ids, User.all, :id, :screen_name %><br>
-  <br>
+<div>
+  <%= form_with(model: @party) do |f| %>
+    <%= f.label :name, "Party Name" %><br>
+    <%= f.text_field :name %><br>
 
-  <%= f.submit %>
-<% end %>
+      <%= f.label :party_goers, "Party-Goers" %>
+      <div>
+        <%= f.collection_check_boxes(:user_ids, User.everyone_else, :id, :screen_name) %>
+      </div>
+
+    <%= f.submit %>
+  <% end %>
 </div>
