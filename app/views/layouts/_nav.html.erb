@@ -1,9 +1,12 @@
 <nav>
-  <% if logged_in? %>
-    <%= button_to "Logout", logout_path, class:"orangeButton", method: :delete, data: { confirm: "Are you sure?" } %>
-  <% elsif current_page?(login_path) %>
-    <%= link_to "Home", root_url, class:"orangeButton" %>
-  <% else %>
-    <%= link_to "Login", login_path, class:"orangeButton" %>
-  <% end %>
+  <div class="flex-container">
+    <% if logged_in? %>
+      <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, class:"orange button" %>
+      <%= link_to "Statuses", user_statuses_path(@user), class:"green button" %>
+    <% elsif current_page?(login_path) %>
+      <%= link_to "Home", root_url, class:"orange button" %>
+    <% else %>
+      <%= link_to "Login", login_path, class:"orange button" %>
+    <% end %>
+  </div>
 </nav>

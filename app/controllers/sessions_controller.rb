@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to root_url, success: "Logged Out!"
+    flash[:success] = "Logged Out!"
+    redirect_to root_url
   end
 
   private

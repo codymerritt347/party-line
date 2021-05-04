@@ -16,10 +16,12 @@
   <% else %>
     <h4>You have no parties. Let's start one!</h4>
   <% end %>
-  <%= link_to "New Party", new_party_path, class:"blueButton" %><br>
+  <%= link_to "New Party", new_party_path, class:"blue button" %><br>
 </div>
 
 <div class="simpleWindow">
-  <%= link_to "Edit User", edit_user_path(@user), class:"orangeButton" %>
-  <%= button_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure?" }, class:"redButton" %>
+  <div class="flex-container">
+    <%= link_to "Edit User", edit_user_path(@user), class:"orange button" %>
+    <%= button_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
+  </div>
 </div>
