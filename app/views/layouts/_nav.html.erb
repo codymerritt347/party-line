@@ -1,8 +1,8 @@
 <nav>
   <div class="flex-container">
     <% if logged_in? %>
-      <%= link_to "Dashboard", user_path(@user), class:"blue button" %>
-      <%= link_to "Statuses", user_statuses_path(@user), class:"green button" %>
+      <%= link_to "Dashboard", user_path(current_user), class:"blue button" %>
+      <%= link_to "Statuses", user_statuses_path(current_user), class:"green button" %>
       <%= link_to "Parties", parties_path, class:"orange button" %>
       <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
     <% elsif current_page?(login_path) %>

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:home, :new, :create]
+
   def home
   end
 
@@ -18,10 +20,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    flash[:success] = "Logged Out!"
     redirect_to root_url
   end
 
   private
-
 end
