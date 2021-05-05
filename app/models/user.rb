@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  has_secure_password
 
   has_many :statuses, dependent: :destroy
   accepts_nested_attributes_for :statuses
@@ -11,8 +8,6 @@ class User < ApplicationRecord
   has_many :parties, through: :user_parties
 
   has_many :messages, through: :parties
-
-  has_secure_password
 
   validates :screen_name, {
     uniqueness: true,
@@ -29,5 +24,4 @@ class User < ApplicationRecord
     }
   }
   
-  private
 end

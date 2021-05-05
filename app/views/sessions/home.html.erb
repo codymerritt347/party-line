@@ -5,6 +5,6 @@
   <div class="flex-container">
     <%= link_to "Sign Up", signup_path, class: "green button" %><br><br>
     <%= link_to "Log In", login_path, class: "orange button" %><br><br>
-    <%= link_to "Connect with Twitter", "auth/:provider/callback", class: "blue button" %>
+    <%= button_to 'Sign In With Github', '/auth/github/callback', class:"blue button" %>
   </div>
 </div>
