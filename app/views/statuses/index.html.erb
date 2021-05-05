@@ -6,7 +6,7 @@
   <% @statuses.each do |status| %>
     <div class="simpleWindow">
       <h2>💭 <%= status.content %></h2>
-      <p><i><%= status.hours_ago %></i><p>
+      <p><i><%= ago(status) %></i><p>
       <div class="flex-container">
         <%= link_to 'Edit Status', edit_user_status_path(current_user, status), class:"orange button" %><br>
         <%= button_to 'Delete Status', user_status_path(current_user, status), method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
@@ -15,9 +15,11 @@
   <% end %>
 <% else %>
   <div class="simpleWindow">
-    <h4>You have no statuses!</h4>
-    <div class="flex container">
-      <%= link_to "New Status", new_user_status_path(current_user), class:"green button" %>
-    </div>
+    <h4>No Statuses... yet!</h4>
+    <% if current_user.id == params[:id] %>
+      <div class="flex container">
+        <%= link_to "New Status", new_user_status_path(current_user), class:"green button" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

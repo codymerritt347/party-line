@@ -1,11 +1,7 @@
 module StatusesHelper
 
-  def no_statuses?(user)
-    if user.statuses.empty?
-      true
-    else
-      false
-    end
+  def ago(status)
+    time_ago_in_words(status.updated_at)
   end
 
 end

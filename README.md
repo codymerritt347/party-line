@@ -1,24 +1,17 @@
-# README
+# PartyLine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A lightweight group messaging platform
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+1. Clone the repository at https://github.com/codymerritt347/party-line
+2. Run bundle install
 
-* System dependencies
+## Usage
 
-* Configuration
+From the homepage, you are welcome to sign-up for a PartyLine Account using your email or sign in through your GitHub account.
+From there, PartyLine is all about connecting with your friends and giving you a central place to post your thoughts and keep the party going.
 
-* Database creation
+## Author
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Cody Merritt, 2021

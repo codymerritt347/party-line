@@ -4,7 +4,7 @@
     <div class="status-bubble">
       <%= @user.statuses.last.content %>
     </div>
-    <%= @user.statuses.last.hours_ago %><br><br>
+    <%= ago(@user.statuses.last) %> ago<br><br>
   <% end %>
   <%= render partial: "statuses/form", user:@user %>
 </div>

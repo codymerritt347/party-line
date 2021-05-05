@@ -5,7 +5,7 @@
 <% if @party.messages.count > 0 %>
   <% @party.messages.each do |message| %>
     <div class="simpleWindow">
-      <%= message.created_at %><br>
+      <%= ago(message) %><br>
       <%= User.find_by_id(message.sender).screen_name %><br><br>
       <div class="status-bubble">
         <%= message.content %>
