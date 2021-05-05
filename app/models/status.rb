@@ -2,14 +2,14 @@ class Status < ApplicationRecord
   belongs_to :user
   scope :my_statuses, ->(user) { where("user_id = ?", user.id) }
 
-  # validates :content, { 
-  #   presence: true,
-  #   length: {
-  #     minimum: 1,
-  #     maximum: 281,
-  #     message: "must contain 1-281 characters"
-  #   }
-  # }
+  validates :content, { 
+    presence: true,
+    length: {
+      minimum: 1,
+      maximum: 281,
+      message: "must contain 1-281 characters"
+    }
+  }
   
   def hours_ago
     time_diff = Time.current - self.created_at

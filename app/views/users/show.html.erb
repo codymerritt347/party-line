@@ -10,11 +10,18 @@
 </div>
 
 <div class="simpleWindow">
-  <h3>Today's Messages:</h3>
+  <h3>❗️Urgent Messages❗️</h3>
+  <% @user.messages.where("urgent = true").each do |message| %>
+    <div class="simpleWindow">
+      <%= link_to "🔎", party_path(message.party) %> <%= message.content %> - <%= User.find_by_id(message.sender).screen_name %>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="simpleWindow">
   <div class="flex-container">
+    <%= link_to "New Party", new_party_path, class:"blue button" %>
     <%= link_to "Edit User", edit_user_path(@user), class:"orange button" %>
     <%= button_to "Delete User", @user, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
   </div>

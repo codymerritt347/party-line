@@ -5,8 +5,8 @@
   </div>
   <% @statuses.each do |status| %>
     <div class="simpleWindow">
-      <%= status.content %><br>
-      <i><%= status.hours_ago %></i><br><br>
+      <h2>💭 <%= status.content %></h2>
+      <p><i><%= status.hours_ago %></i><p>
       <div class="flex-container">
         <%= link_to 'Edit Status', edit_user_status_path(current_user, status), class:"orange button" %><br>
         <%= button_to 'Delete Status', user_status_path(current_user, status), method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>

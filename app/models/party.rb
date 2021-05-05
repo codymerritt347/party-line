@@ -3,5 +3,5 @@ class Party < ApplicationRecord
   has_many :users, through: :user_parties
   has_many :messages, dependent: :destroy
 
-  # validates :name, { presence: true }
+  validates :name, { presence: true }
 end

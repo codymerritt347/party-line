@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
   has_many :statuses, dependent: :destroy
   accepts_nested_attributes_for :statuses
 
@@ -9,30 +14,20 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  # validates :screen_name, {
-  #   presence: true,
-  #   uniqueness: true,
-  #   length: {
-  #     minimum: 8,
-  #     maximum: 15,
-  #     message: "must contain 8-15 characters"
-  #   }
-  # }
-  # validates :email, {
-  #   presence: true,
-  #   uniqueness: true,
-  #   format: {  
-  #     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  
-  #   }
-  # }
-  # validates :password, {
-  #   presence: true,
-  #   length: {
-  #     minimum: 6,
-  #     maximum: 20,
-  #     message: "must contain 6-20 characters"
-  #   }
-  # }
+  validates :screen_name, {
+    uniqueness: true,
+    length: {
+      minimum: 8,
+      maximum: 15,
+      message: "must contain 8-15 characters"
+    }
+  }
+  validates :email, {
+    uniqueness: true,
+    format: {  
+      with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i  
+    }
+  }
   
   private
 end
