@@ -4,6 +4,7 @@
       <%= link_to "Dashboard", user_path(current_user), class:"blue button" %>
       <%= link_to "Statuses", user_statuses_path(current_user), class:"green button" %>
       <%= link_to "Parties", parties_path, class:"orange button" %>
+      <%= link_to "Users", users_path, class:"blue button" %>
       <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
     <% elsif current_page?(login_path) %>
       <%= link_to "Home", root_url, class:"orange button" %>
