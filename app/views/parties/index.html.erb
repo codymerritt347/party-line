@@ -1,5 +1,5 @@
-<% if @parties.count != 0 %>
-  <% @parties.each do |party| %>
+<% if current_user.parties.count != 0 %>
+  <% current_user.parties.each do |party| %>
     <div class="simpleWindow">
       <%= link_to party.name, party %><br>
       <h3>Party Goers:</h3>
@@ -14,10 +14,9 @@
   <% end %>
 <% else %>
   <div class="simpleWindow">
-    <h4>You have no parties. Let's start one!</h4>
+    <h4>You have no parties! Let's start one!</h4>
+    <div class="flex-container">
+      <%= link_to "New Party", new_party_path, class:"blue button" %>
+    </div>
   </div>
 <% end %>
-
-<div class="flex-container">
-  <%= link_to "New Party", new_party_path, class:"blue button" %>
-</div>

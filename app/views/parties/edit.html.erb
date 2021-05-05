@@ -1,4 +1,13 @@
-<h1>Edit Party</h1>
-<div>
+<% if @party.errors.any? %>
+  <div class="errorWindow">
+    <h2><%= pluralize(@party.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <% @party.errors.each do |error| %>
+      <p><%= error.full_message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="simpleWindow">
+  <h1>🛠 Edit Party 🛠</h1>
   <%= render "form" %>
 </div>

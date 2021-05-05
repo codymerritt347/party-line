@@ -1,18 +1,23 @@
 <% if @statuses.count != 0 %>
+  <div class="simpleWindow">
+    <h1>👤 <%= current_user.screen_name %> 👤</h1>
+    <h3><%= @statuses.count %> Update(s)</h3>
+  </div>
   <% @statuses.each do |status| %>
     <div class="simpleWindow">
-      <%= status.user.screen_name %><br>
       <%= status.content %><br>
       <i><%= status.hours_ago %></i><br><br>
       <div class="flex-container">
-        <%= link_to 'Edit Status', edit_user_status_path(@user, status), class:"orange button" %><br>
-        <%= button_to 'Delete Status', [@user,status], method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
+        <%= link_to 'Edit Status', edit_user_status_path(current_user, status), class:"orange button" %><br>
+        <%= button_to 'Delete Status', user_status_path(current_user, status), method: :delete, data: { confirm: "Are you sure?" }, class:"red button" %>
       </div>
     </div>
   <% end %>
 <% else %>
   <div class="simpleWindow">
-  <h1>You have no statuses!</h1>
-  <%= link_to "New Status", new_user_status_path(@user), class:"green button" %>
+    <h4>You have no statuses!</h4>
+    <div class="flex container">
+      <%= link_to "New Status", new_user_status_path(current_user), class:"green button" %>
+    </div>
   </div>
 <% end %>

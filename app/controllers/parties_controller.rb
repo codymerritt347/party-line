@@ -2,25 +2,25 @@ class PartiesController < ApplicationController
   before_action :set_party, only: %i[ show edit update destroy ]
   
   def index
-    @parties = current_user.parties
+    @party = Party.all
   end
 
   def new
-    @party = current_user.parties.build
+    @party = Party.new
   end
 
   def create
-    @party = current_user.parties.build(party_params)
+    @party = Party.new(party_params)
+    @party.users << current_user
     if @party.save
-      current_user.parties << @party
-      current_user.save
-      redirect_to @party
+      render :index
     else
       render :new
     end
   end
 
   def show
+    @message = Message.new
   end
 
   def edit
@@ -49,7 +49,8 @@ class PartiesController < ApplicationController
   def party_params
     params.require(:party).permit(
       :name,
-      user_ids: []
+      user_ids: [],
+      message_ids: []
     )
   end
 

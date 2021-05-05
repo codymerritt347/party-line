@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
   resources :users do
-    resources :statuses
+    resources :statuses, except: [:show]
   end
   resources :parties do
     resources :messages
