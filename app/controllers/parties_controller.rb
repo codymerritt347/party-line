@@ -28,7 +28,12 @@ class PartiesController < ApplicationController
 
   def update
     @party.update(party_params)
-    redirect_to @party
+    @party.users << current_user
+    if @party.save
+      redirect_to @party
+    else
+      render :edit
+    end
   end
 
   def destroy

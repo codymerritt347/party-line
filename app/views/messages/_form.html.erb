@@ -1,6 +1,9 @@
 <%= form_with(model: [@party,@message], local: true) do |f| %>
-  <%= f.label :content, "Say something!" %><br>
+  <%= f.label :content, "Send a message!" %><br>
   <%= f.text_field :content %><br>
+
+  <%= f.label :urgent, "Urgent?" %><br>
+  <%= f.select :urgent, [['Important!', true], ['Chill', 'false']] %><br><br>
 
   <%= f.submit class:"green button" %>
 <% end %>

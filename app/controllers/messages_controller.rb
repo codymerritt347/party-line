@@ -11,9 +11,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @party.messages.build(message_params)
+    @message = Message.new(message_params)
+    @message.party = @party
+    @message.sender = current_user.id
     if @message.save
-      redirect_to @party
+      redirect_to party_path(@party)
     else
       render :new
     end
@@ -55,8 +57,9 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(
       :party_id,
-      :user_id,
-      :content
+      :content,
+      :urgent,
+      :sender
     )
   end
 end

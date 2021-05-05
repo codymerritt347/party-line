@@ -58,7 +58,8 @@ class UsersController < ApplicationController
       statuses_attributes: [
         :user_id,
         :content
-      ]
+      ],
+      party_ids: [],
     )
   end
 

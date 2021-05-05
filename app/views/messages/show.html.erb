@@ -1,18 +1,2 @@
-<div>
-  <h1>Message</h1>
-</div>
-<div>
-  <%= @message.created_at %><br>
-  <%= how_long_ago @message %><br>
-  <%= @message.content %><br>
-</div>
-<div>
-  <h4>From</h3>
-  <%= link_to @message.party.name, party_path(@message.party) %>
-</div>
-<div>
-  <h3>Options</h3>
-  <%= link_to "Reply", new_reply_path %><br>
-  <%= link_to "Edit Message", edit_message_path(@message) %><br>
-  <%= button_to "Delete Message", message_path(@message), method: :delete, data: { confirm: "Are you sure?" } %><br>
+<div class="simpleWindow">
 </div>

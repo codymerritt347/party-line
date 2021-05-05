@@ -14,8 +14,11 @@
     <%= f.text_field :email %><br>
 
     <%= f.label :password, "🔑 Password:" %><br>
-    <%= f.password_field :password %><br>
+    <%= f.password_field :password %><br><br>
 
-    <%= f.submit "Log In", class:"blue button" %>
+    <div class="flex-container">
+      <%= f.submit "Log In", class:"blue button" %>
+      <%= link_to "Home", root_url, class:"orange button" %>
+      </div>
   <% end %>
 </div>

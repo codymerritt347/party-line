@@ -1,12 +1,12 @@
 <div class="simpleWindow">
-  <h1>🎉 <%= @party.name %> 🎉</h1>
+  <h2>🎉 <%= @party.name %> 🎉</h1>
 </div>
 
 <% if @party.messages.count > 0 %>
   <% @party.messages.each do |message| %>
     <div class="simpleWindow">
       <%= message.created_at %><br>
-      <%= message.user.screen_name %><br><br>
+      <%= User.find_by_id(message.sender).screen_name %><br><br>
       <div class="status-bubble">
         <%= message.content %>
       </div>

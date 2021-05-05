@@ -14,12 +14,12 @@ ActiveRecord::Schema.define(version: 2021_04_30_152325) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "party_id", null: false
-    t.integer "user_id", null: false
     t.text "content"
+    t.boolean "urgent"
+    t.integer "sender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["party_id"], name: "index_messages_on_party_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_04_30_152325) do
   end
 
   add_foreign_key "messages", "parties"
-  add_foreign_key "messages", "users"
   add_foreign_key "statuses", "users"
   add_foreign_key "user_parties", "parties"
   add_foreign_key "user_parties", "users"
