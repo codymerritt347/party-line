@@ -1,9 +1,9 @@
 class StatusesController < ApplicationController
-  before_action :set_user
   before_action :set_status, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[ index new create  ]
   
   def index
-    @statuses = @user.statuses
+    @statuses = Status.all
   end
 
   def new
@@ -11,12 +11,15 @@ class StatusesController < ApplicationController
   end
 
   def create
-    @status = current_user.statuses.build(status_params)
+    @status = @user.build_status(status_params)
     if @status.save
       redirect_to @user
     else
       render :new
     end
+  end
+
+  def show
   end
 
   def edit
@@ -31,8 +34,7 @@ class StatusesController < ApplicationController
   end
 
   def destroy
-    if @status
-      @status.destroy
+    if @status.destroy
       redirect_to user_statuses_path(@user), success: "Status deleted"
     else
       redirect_to user_statuses_path(@user), error: "Status not found"
@@ -40,10 +42,6 @@ class StatusesController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
 
   def set_status
     @status = Status.find_by_id(params[:id])
@@ -54,5 +52,9 @@ class StatusesController < ApplicationController
       :user_id,
       :content
     )
+  end
+
+  def set_user
+    @user = User.find_by_id(params[:user_id])
   end
 end

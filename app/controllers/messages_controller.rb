@@ -1,9 +1,9 @@
 class MessagesController < ApplicationController
-  before_action :set_party
   before_action :set_message, only: %i[ show edit update destroy ]
+  before_action :set_party, only: %i[ index new create ]
 
   def index
-    @messages = @party.messages
+    @messages = Message.all
   end
 
   def new
@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.party = @party
-    @message.sender = current_user.id
+    @message.sender = current_user
     if @message.save
       redirect_to party_path(@party)
     else
@@ -36,8 +36,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    if @message
-      @message.destroy
+    if @message.destroy
       redirect_to @party, success: "Message deleted"
     else
       redirect_to @party, error: "Message not found"
@@ -45,10 +44,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def set_party
-    @party = Party.find(params[:party_id])
-  end
 
   def set_message
     @message = Message.find_by_id(params[:id])
@@ -62,4 +57,9 @@ class MessagesController < ApplicationController
       :sender
     )
   end
+
+  def set_party
+    @party = Party.find(params[:party_id])
+  end
+
 end

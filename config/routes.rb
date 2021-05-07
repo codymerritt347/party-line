@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get 'auth/google_oauth2/callback', to: 'sessions#omniauth'
 
   resources :users do
-    resources :statuses, except: [:show]
+    resources :statuses, shallow: true
   end
   resources :parties do
-    resources :messages
+    resources :messages, shallow: true
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

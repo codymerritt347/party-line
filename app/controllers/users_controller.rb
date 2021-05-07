@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[ new create ]
   before_action :set_user, only: %i[ show edit update destroy ]
+  skip_before_action :require_login, only: %i[ new create ]
   
   def index
     @users = User.all
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.statuses.build
+    @user.build_status
   end
 
   def create
@@ -23,15 +23,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @status = Status.new
+    @user.build_status
   end
 
   def edit
   end
 
   def update
-    @user.update(user_params)
-    if @user.valid?
+    if @user.update(user_params)
       redirect_to @user
     else
       render :edit
@@ -39,11 +38,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user
-      @user.destroy
-      redirect_to '/'
+    if @user.destroy
+      redirect_to root_path
     else
-      redirect_to users_path
+      redirect_to @user
     end
   end
 

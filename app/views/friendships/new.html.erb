@@ -1,0 +1,6 @@
+<%= form_with(model: @friendship) do |f| %>
+  <%= f.collection_select :friend_id, User.order(:last_name), :id, :last_name %>
+  <%= f.input :tag %>
+  
+  <%= f.submit %>
+<% end %>

@@ -11,7 +11,7 @@ class PartiesController < ApplicationController
 
   def create
     @party = Party.new(party_params)
-    @party.users << current_user
+    current_user.parties << @party
     if @party.save
       render :index
     else
@@ -20,16 +20,14 @@ class PartiesController < ApplicationController
   end
 
   def show
-    @message = Message.new
+    @party.build_message(user: current_user)
   end
 
   def edit
   end
 
   def update
-    @party.update(party_params)
-    @party.users << current_user
-    if @party.save
+    if @party.update(party_params)
       redirect_to @party
     else
       render :edit
@@ -37,8 +35,7 @@ class PartiesController < ApplicationController
   end
 
   def destroy
-    if @party
-      @party.destroy
+    if @party.destroy
       redirect_to parties_path, notice: "Party deleted"
     else
       redirect_to parties_path, notice: "Party not found"

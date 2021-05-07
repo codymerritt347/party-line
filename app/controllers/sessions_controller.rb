@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:home, :new, :create, :omniauth]
+  skip_before_action :require_login, only: %i[ home new create omniauth ]
 
   def home
   end
@@ -14,13 +14,13 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:error] =  "Invalid email/password combination"
-      redirect_to login_path
+      render :new
     end
   end
 
   def destroy
     session.clear
-    redirect_to root_url
+    redirect_to root_path
   end
 
   def omniauth
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      render :home
+      redirect_to root_path
     end
   end
 
