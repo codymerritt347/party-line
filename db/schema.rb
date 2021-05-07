@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_174331) do
+ActiveRecord::Schema.define(version: 2021_05_07_033526) do
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "party_id", null: false
-    t.text "content"
-    t.boolean "urgent"
-    t.integer "sender"
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["party_id"], name: "index_messages_on_party_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "party_id"
+    t.integer "sender_id"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "parties", force: :cascade do |t|
@@ -29,20 +35,17 @@ ActiveRecord::Schema.define(version: 2021_04_16_174331) do
   end
 
   create_table "statuses", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_statuses_on_user_id"
   end
 
   create_table "user_parties", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "party_id", null: false
+    t.integer "user_id"
+    t.integer "party_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["party_id"], name: "index_user_parties_on_party_id"
-    t.index ["user_id"], name: "index_user_parties_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,8 +59,4 @@ ActiveRecord::Schema.define(version: 2021_04_16_174331) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "messages", "parties"
-  add_foreign_key "statuses", "users"
-  add_foreign_key "user_parties", "parties"
-  add_foreign_key "user_parties", "users"
 end
