@@ -20,4 +20,15 @@ module PartyLine
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
+
+  def credentials
+    if Rails.env.production?
+      super
+    else
+      encrypted(
+        "config/credentials.#{Rails.env.downcase}.yml.enc",
+        key_path: "config/#{Rails.env.downcase}.key"
+      )
+    end
+  end
 end

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   root "sessions#home"
+
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   delete 'logout', to: 'sessions#destroy'
-  get '/auth/github/callback', to: "sessions#github"
+
+  get 'auth/google_oauth2/callback', to: 'sessions#omniauth'
+
   resources :users do
     resources :statuses, except: [:show]
   end

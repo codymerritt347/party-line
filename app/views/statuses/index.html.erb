@@ -1,6 +1,6 @@
 <% if @statuses.count != 0 %>
   <div class="simpleWindow">
-    <h1>👤 <%= current_user.screen_name %> 👤</h1>
+    <h1>👤 <%= current_user.full_name %> 👤</h1>
     <h3><%= @statuses.count %> Update(s)</h3>
   </div>
   <% @statuses.each do |status| %>

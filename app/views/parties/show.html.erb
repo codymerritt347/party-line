@@ -6,7 +6,7 @@
   <% @party.messages.each do |message| %>
     <div class="simpleWindow">
       <%= ago(message) %><br>
-      <%= User.find_by_id(message.sender).screen_name %><br><br>
+      <%= User.find_by_id(message.sender).full_name %><br><br>
       <div class="status-bubble">
         <%= message.content %>
       </div>

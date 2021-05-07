@@ -6,14 +6,7 @@ class User < ApplicationRecord
   has_many :messages, through: :parties
   
   has_secure_password
-  validates :screen_name, {
-    uniqueness: true,
-    length: {
-      minimum: 8,
-      maximum: 15,
-      message: "must contain 8-15 characters"
-    }
-  }
+
   validates :email, {
     uniqueness: true,
     format: {  
@@ -21,7 +14,20 @@ class User < ApplicationRecord
     }
   }
 
-  scope :order_by_screen_name, -> { order(screen_name: :asc) }
+  scope :order_by_last_name, -> { order(last_name: :asc) }
   scope :everyone_else, ->(user) { where.not("id = ?", user.id) }
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  def self.create_from_omniauth(auth)
+    self.find_or_create_by(uid: auth[:uid], provider: auth[:provider]) do |u|
+      u.first_name = auth[:info][:first_name]
+      u.last_name = auth[:info][:last_name]
+      u.email = auth[:info][:email]
+      u.password = SecureRandom.hex(16)
+    end
+  end
 
 end

@@ -5,7 +5,7 @@
       <h4><%= party.messages.count %> Messages</h4>
       <h3>Party Goers:</h3>
       <% party.users.each do |user| %>
-        <%= user.screen_name %><br>
+        <%= user.full_name %><br>
       <% end %><br>
       <div class="flex-container">
         <%= link_to "Edit Party", edit_party_path(party), class:"orange button" %>

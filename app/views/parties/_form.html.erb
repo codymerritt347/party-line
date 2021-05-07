@@ -3,7 +3,7 @@
   <%= f.text_field :name %><br>
 
   <h3>Invite Some Friends!</h3>
-  <%= f.collection_check_boxes(:user_ids, User.everyone_else(current_user), :id, :screen_name) do |b| %>
+  <%= f.collection_check_boxes(:user_ids, User.everyone_else(current_user), :id, :first_name) do |b| %>
       <div class="simpleWindow">
         <%= b.label class:"checkbox" do %>
          <%= b.check_box + b.text %>

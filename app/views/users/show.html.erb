@@ -1,5 +1,5 @@
 <div class="simpleWindow">
-  <h1><%= @user.screen_name %></h1>
+  <h1><%= @user.full_name %></h1>
   <% if !@user.statuses.empty? %>
     <div class="status-bubble">
       <%= @user.statuses.last.content %>
@@ -13,7 +13,7 @@
   <h3>❗️Urgent Messages❗️</h3>
   <% @user.messages.where("urgent = true").each do |message| %>
     <div class="simpleWindow">
-      <%= link_to "🔎", party_path(message.party) %> <%= message.content %> - <%= User.find_by_id(message.sender).screen_name %>
+      <%= link_to "🔎", party_path(message.party) %> <%= message.content %> - <%= User.find_by_id(message.sender).full_name %>
     </div>
   <% end %>
 
